@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Style/buttons_style.uss?fileID=7433441132597879392&amp;guid=43b874538617b5f4892751987f35ebc5&amp;type=3#buttons_style" />
+    <Style src="project://database/Assets/UI%20Toolkit/Style/labels_style.uss?fileID=7433441132597879392&amp;guid=f6b42b1556abd8d428e5d46dfbbe8bbf&amp;type=3#labels_style" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-color: rgb(255, 255, 255); flex-direction: row;">
+        <ui:VisualElement name="SideScroller" style="width: 30%; background-color: rgb(72, 25, 72); align-items: stretch; justify-content: center;">
+            <ui:Label text="Label" display-tooltip-when-elided="true" class="title-label" style="color: rgb(255, 255, 255);" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" class="title-button" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" class="title-button" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" class="title-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
