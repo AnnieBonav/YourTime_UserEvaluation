@@ -6,7 +6,7 @@ public class TriggerExit : MonoBehaviour
 {
     public static TriggerExit instance;
 
-    [HideInInspector]
+    //[HideInInspector]
     public VRUIOperations currentCollider;
 
     private void Awake()
