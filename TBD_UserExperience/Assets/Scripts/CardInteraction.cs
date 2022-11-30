@@ -9,7 +9,6 @@ public class CardInteraction : MonoBehaviour
 
     public void StartActivity()
     {
-        //SceneManager.LoadScene(ActivityName);
-        SceneManager.LoadScene("ActivityPrototype");
+        SceneManager.LoadScene(ActivityName);
     } 
 }

@@ -1613,6 +1613,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2100000, guid: 92da938dfb68bf54e9228b705ac01519, type: 2}
+    - target: {fileID: 2850220105533245043, guid: fcad4bff63fcb2444a7715dde6eaa39c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322308259418554941, guid: fcad4bff63fcb2444a7715dde6eaa39c,
         type: 3}
       propertyPath: m_Name

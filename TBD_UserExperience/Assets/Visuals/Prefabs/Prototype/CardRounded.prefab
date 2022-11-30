@@ -292,7 +292,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2271257108279008994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -428,7 +428,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2271257108280819457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20.999908}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1058,6 +1058,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1208.1157, y: 1495.1755, z: 1}
   m_Center: {x: -600.27655, y: 747.0875, z: 0}
+--- !u!114 &5171176455746950202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133386969053697572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874a6cf9b615a5f46961d4e1b87e84fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActivityName: 
 --- !u!114 &6466297552359542854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,26 +1088,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5133386969053697572}
-          m_TargetAssemblyTypeName: DragUI, Assembly-CSharp
-          m_MethodName: 
+        - m_Target: {fileID: 5171176455746950202}
+          m_TargetAssemblyTypeName: CardInteraction, Assembly-CSharp
+          m_MethodName: StartActivity
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 5133386969053697572}
-          m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-          m_MethodName: 
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2100000, guid: 92da938dfb68bf54e9228b705ac01519,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
