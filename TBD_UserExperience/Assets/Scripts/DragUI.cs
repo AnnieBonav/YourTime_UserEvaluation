@@ -6,7 +6,7 @@ public class DragUI : MonoBehaviour
 {
     public Transform pointer;
 
-    [Header("Select To INclude In Drag")]
+    [Header("Select To Include In Drag")]
     public bool x;
     public bool y;
     public bool z;
@@ -48,7 +48,7 @@ public class DragUI : MonoBehaviour
     
     public IEnumerator moving()
     {
-        Debug.Log("I am running");
+        //Debug.Log("I am running");
 
         /*
         if (isRunning!)
@@ -58,7 +58,7 @@ public class DragUI : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("I am on a loop");
+            //Debug.Log("I am on a loop");
             if (currentPosition.z <= initialPosition.z + moveAmount)
             {
                 currentPosition.z += 0.001f;
