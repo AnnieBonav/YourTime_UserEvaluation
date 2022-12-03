@@ -7,12 +7,10 @@ using UnityEngine;
 
 public class MyTimer : MonoBehaviour
 {
-    [Header("Timer Settings")]
-    public float currentTime;
-    public bool countDown;
+    [SerializeField]
+    private float currentTime;
 
     [Header("Limit Settings")]
-    public bool hasLimit;
     public float timerLimit;
 
     public delegate void OnTimerEnds();
@@ -21,16 +19,16 @@ public class MyTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
-        if (hasLimit && ((countDown && currentTime <= timerLimit || !countDown && currentTime >= timerLimit)))
+        if (currentTime >= 0)
         {
-
-            currentTime = timerLimit;
+            currentTime = currentTime -= Time.deltaTime;
+        }
+        else
+        {
             onTimerEnds?.Invoke();
+            currentTime = timerLimit;
         }
     }
-
-    
 
     void Start() //I create the delegate where the action wil be triggered, then I make an object subrscibe to it from anotehr script
     {

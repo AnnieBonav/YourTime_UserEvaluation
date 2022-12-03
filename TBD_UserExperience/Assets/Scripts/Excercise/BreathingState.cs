@@ -3,25 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 namespace BreathExercise {
 
     public enum StateName {Start, BreathIn, HoldIn, BreathOut, HoldOut, End};
 
-    public abstract class BreathingState
+    [Serializable]
+    public class BreathingState : MonoBehaviour
     {
-        protected void Start()
-        {
-            Debug.Log("Did I awake?");
-        }
-        //public StateName stateName;
-        protected string thisString = "BreathExercise";
-        //[SerializeField] protected Animation animation;
+        [SerializeField]
+        public GameObject PrefabToShow;
 
-        public void PrintStateName()
+        [SerializeField]
+        public StateName stateName;
+
+        private GameObject prefabShown;
+
+        public BreathingState(StateName _StateName, GameObject _PrefabToShow)
         {
-            Debug.Log(thisString);
+            PrefabToShow = _PrefabToShow;
+            stateName = _StateName;
+            this.InstancePrefab(); //Instantiate hidden once, then I do not need to make the call again
         }
+        
+        public void InstancePrefab()
+        {
+            prefabShown = Instantiate(PrefabToShow);
+            prefabShown.SetActive(false);
+        }
+
+        public void ShowPrefab()
+        {
+            prefabShown.SetActive(true);
+        }
+
+        public void HidePrefab()
+        {
+            prefabShown.SetActive(false);
+        }
+
+        
     }
 }
 
