@@ -7,43 +7,31 @@ using System;
 
 namespace BreathExercise {
 
-    public enum StateName {Start, BreathIn, HoldIn, BreathOut, HoldOut, End};
-
     [Serializable]
-    public class BreathingState : MonoBehaviour
+    public class BreathingState : MonoBehaviour //OnAwake nor awake work
     {
-        [SerializeField]
         public GameObject PrefabToShow;
-
-        [SerializeField]
         public StateName stateName;
 
         private GameObject prefabShown;
 
-        public BreathingState(StateName _StateName, GameObject _PrefabToShow)
-        {
-            PrefabToShow = _PrefabToShow;
-            stateName = _StateName;
-            this.InstancePrefab(); //Instantiate hidden once, then I do not need to make the call again
-        }
-        
-        public void InstancePrefab()
+        public void InstancePrefab(GameObject prefabParent)
         {
             prefabShown = Instantiate(PrefabToShow);
+            prefabShown.transform.SetParent(prefabParent.transform, false);
+
             prefabShown.SetActive(false);
         }
 
         public void ShowPrefab()
         {
-            prefabShown.SetActive(true);
+            prefabShown.SetActive(true); //Change to visible or not visible
         }
 
         public void HidePrefab()
         {
             prefabShown.SetActive(false);
         }
-
-        
     }
 }
 
