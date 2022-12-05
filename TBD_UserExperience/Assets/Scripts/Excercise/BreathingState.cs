@@ -11,7 +11,8 @@ namespace BreathExercise {
     public class BreathingState : MonoBehaviour //OnAwake nor awake work
     {
         public GameObject PrefabToShow;
-        public StateName stateName;
+        public StateName StateName;
+        public int StateDuration;
 
         private GameObject prefabShown;
 
