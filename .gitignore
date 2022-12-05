@@ -4,7 +4,11 @@
 #
 /[Ll]ibrary/
 [Ll]ibrary/
-!/[Ll]ibrary/*.asset
+!/[Ll]ibrary/*.
+
+/Allsky/
+Allsky/
+Debug/
 
 /[Tt]emp/
 /[Oo]bj/
