@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabToShow: {fileID: 919132149155446097, guid: 2f6dd9fba974c8a458a2f9c4493b78e3,
     type: 3}
-  StateName: 3
+  StateName: 4
   StateDuration: 6

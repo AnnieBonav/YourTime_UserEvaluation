@@ -5,10 +5,12 @@ using BreathExercise;
 using JetBrains.Annotations;
 using System.Runtime.CompilerServices;
 using System;
+using static BreathExercise.BreathingStateMachine;
+using static CardInteraction;
 
 namespace BreathExercise
 {
-    public enum StateName { Start, BreathIn, HoldIn, BreathOut, HoldOut, End };
+    public enum StateName { Off, Start, BreathIn, HoldIn, BreathOut, HoldOut, End };
 
     public class BreathingStateMachine : MonoBehaviour
     {
@@ -25,21 +27,28 @@ namespace BreathExercise
 
         public MyTimer ExcerciseTimer;
 
-        private bool isRunning = true;
+        private bool isRunning = false;
 
         public ParticleSystem breathingParticles;
+
+        
+        private void StartExercise()
+        {
+            
+            CheckState();
+        }
 
         private void Awake()
         {            
             MyTimer.onTimerEnds += CheckState; //Attach the Event
+            startExerciseClick += StartExercise;
 
             foreach (BreathingState state in BreathingStates)
             {
                 state.InstancePrefab(TitlesParent);
             }
             currentState = BreathingStates[0]; // Define start Breathing State
-            ExcerciseTimer.ModifyTime(currentState.StateDuration); //Defines first time
-            currentState.ShowPrefab(); //Shows first prefab
+            currentState.ShowPrefab();
         }
 
         private void Start()
@@ -66,26 +75,29 @@ namespace BreathExercise
 
         private void CheckState()
         {
-            Debug.Log("Enters Check State");
             switch (currentState.StateName)
             {
+                case StateName.Off:
+                    isRunning = true;
+                    ChangeState(BreathingStates[1]); //Goes to Start
+                    break;
+
                 case StateName.Start:
                     breathingParticles.Play(true);
-                    ChangeState(BreathingStates[1]); //Goes to Breath In
+                    ChangeState(BreathingStates[2]); //Goes to Breath In
                     break;
 
                 case StateName.BreathIn:
-                    
                     currentIterations++;
-                    ChangeState(BreathingStates[2]); //Goes to Hold In
+                    ChangeState(BreathingStates[3]); //Goes to Hold In
                     break;
 
                 case StateName.HoldIn:
-                    ChangeState(BreathingStates[3]); //Goes to Breath Out 
+                    ChangeState(BreathingStates[4]); //Goes to Breath Out 
                     break;
 
                 case StateName.BreathOut:
-                    ChangeState(BreathingStates[4]); //Goes to Hold out
+                    ChangeState(BreathingStates[5]); //Goes to Hold out
                     break;
 
                 case StateName.HoldOut: 
