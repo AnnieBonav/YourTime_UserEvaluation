@@ -324,7 +324,7 @@ public partial class @UserEvaluation : IInputActionCollection2, IDisposable
                     ""id"": ""e4f4bcb5-a3e9-44c9-902d-15367bc9611e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 },
                 {

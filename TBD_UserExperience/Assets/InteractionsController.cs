@@ -9,18 +9,22 @@ public class InteractionsController : MonoBehaviour
     public UserEvaluation interactionController;
 
     //Splash Screen
-    public MeshRenderer getStartedRenderer;
+    public MeshRenderer getStartedRenderer = null;
     public Material lightBaseMaterial;
     public Material lightHoverMaterial;
 
     // Main Menu
-    public MeshRenderer dailyCardRenderer;
-    public MeshRenderer aboutCardRenderer;
+    public MeshRenderer dailyCardRenderer = null;
+    public MeshRenderer aboutCardRenderer = null;
     public Material darkBaseMaterial;
     public Material darkHoverMaterial;
 
     [SerializeField]
     LayerMask layerMask;
+
+    private bool getStartedHovered = false;
+    private bool aboutCardHovered = false;
+    private bool dailyCardHovered = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -31,16 +35,14 @@ public class InteractionsController : MonoBehaviour
     private void OnEnable()
     {
         interactionController.Enable();
-        interactionController.UI.Click.performed += CheckClick;
+        interactionController.UI.Click.canceled += CheckClick;
         interactionController.UI.Point.performed += CheckHover;
-        interactionController.UI.Point.canceled += CheckClick;
-        interactionController.UI.Point.canceled += RemoveHover;
     }
 
     private void OnDisable()
     {
         interactionController.Disable();
-        interactionController.UI.Click.performed -= CheckClick;
+        interactionController.UI.Click.canceled -= CheckClick;
         interactionController.UI.Point.performed -= CheckHover;
 
     }
@@ -50,50 +52,75 @@ public class InteractionsController : MonoBehaviour
         Debug.Log("Removed Hover");
     }
 
-    private void CheckHover(InputAction.CallbackContext context)
-    { 
+    private bool CheckRayCollision()
+    {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
-            if (hit.collider != null && hit.transform.name == "GetStarted")
-            {
-                getStartedRenderer.material = lightHoverMaterial;
-            }
-            else if(hit.transform.name == "DailyCard")
-            {
-                dailyCardRenderer.material = darkHoverMaterial;
-                aboutCardRenderer.material = darkBaseMaterial;
-            }
-            else if(hit.transform.name == "AboutCard")
-            {
-                dailyCardRenderer.material = darkBaseMaterial;
-                aboutCardRenderer.material = darkHoverMaterial;
-            }
+            if (hit.transform.name == "GetStarted") getStartedHovered = true;
+            else getStartedHovered = false;
+
+            if (hit.transform.name == "DailyCard") dailyCardHovered = true;
+            else dailyCardHovered = false;
+
+            if (hit.transform.name == "AboutCard") aboutCardHovered = true;
+            else aboutCardHovered = false;
+
+            return true;
         }
         else
         {
-            getStartedRenderer.material = lightBaseMaterial;
-            dailyCardRenderer.material = darkBaseMaterial;
+            getStartedHovered = false;
+            dailyCardHovered = false;
+            aboutCardHovered = false;
+            return false;
+        }
+        
+    }
+
+    private void CheckHover(InputAction.CallbackContext context)
+    {
+        CheckRayCollision();
+        if (getStartedHovered)
+        {
+            //Debug.Log("Entered Hovered");
+            getStartedRenderer.material = lightHoverMaterial;
+            //return; //Check logic if I can leave only ifs and rteturns
+        }
+        else if (dailyCardHovered)
+        {
+            dailyCardRenderer.material = darkHoverMaterial;
             aboutCardRenderer.material = darkBaseMaterial;
+        }
+        else if (aboutCardHovered)
+        {
+            dailyCardRenderer.material = darkBaseMaterial;
+            aboutCardRenderer.material = darkHoverMaterial;
+        }
+        else
+        {
+            //Debug.Log("Entered else");
+            if(getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
+            if (dailyCardRenderer != null) dailyCardRenderer.material = darkBaseMaterial;
+            if (aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
         }
     }
 
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, layerMask))
+        if (getStartedHovered)
         {
-            if (hit.collider != null && hit.transform.name == "DailyCard")
-            {
-                SceneManager.LoadScene("ActivityPrototype");
-            }else if(hit.transform.name == "AboutCard")
-            {
-                SceneManager.LoadScene("AboutScene");
-            }
-                
+            SceneManager.LoadScene("MainMenu");
+        }
+        else if (dailyCardHovered)
+        {
+            SceneManager.LoadScene("BreathingExercise");
+        }
+        else if (aboutCardHovered)
+        {
+            SceneManager.LoadScene("About");
         }
     }
 
