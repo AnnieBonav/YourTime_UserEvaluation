@@ -7,10 +7,17 @@ using UnityEngine.SceneManagement;
 public class InteractionsController : MonoBehaviour
 {
     public UserEvaluation interactionController;
+
+    //Splash Screen
+    public MeshRenderer getStartedRenderer;
+    public Material lightBaseMaterial;
+    public Material lightHoverMaterial;
+
+    // Main Menu
     public MeshRenderer dailyCardRenderer;
     public MeshRenderer aboutCardRenderer;
-    public Material baseMaterial;
-    public Material hoverMaterial;
+    public Material darkBaseMaterial;
+    public Material darkHoverMaterial;
 
     [SerializeField]
     LayerMask layerMask;
@@ -49,21 +56,26 @@ public class InteractionsController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
-            if (hit.collider != null && hit.transform.name == "DailyCard")
+            if (hit.collider != null && hit.transform.name == "GetStarted")
             {
-                dailyCardRenderer.material = hoverMaterial;
-                aboutCardRenderer.material = baseMaterial;
+                getStartedRenderer.material = lightHoverMaterial;
+            }
+            else if(hit.transform.name == "DailyCard")
+            {
+                dailyCardRenderer.material = darkHoverMaterial;
+                aboutCardRenderer.material = darkBaseMaterial;
             }
             else if(hit.transform.name == "AboutCard")
             {
-                dailyCardRenderer.material = baseMaterial;
-                aboutCardRenderer.material = hoverMaterial;
+                dailyCardRenderer.material = darkBaseMaterial;
+                aboutCardRenderer.material = darkHoverMaterial;
             }
         }
         else
         {
-            dailyCardRenderer.material = baseMaterial;
-            aboutCardRenderer.material = baseMaterial;
+            getStartedRenderer.material = lightBaseMaterial;
+            dailyCardRenderer.material = darkBaseMaterial;
+            aboutCardRenderer.material = darkBaseMaterial;
         }
     }
 
