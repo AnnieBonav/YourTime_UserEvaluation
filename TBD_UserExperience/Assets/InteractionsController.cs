@@ -24,15 +24,16 @@ public class InteractionsController : MonoBehaviour
     public Material darkHoverMaterial;
 
     //Exercise
-    public MeshRenderer startExerciseRenderer = null;
     public delegate void StartExerciseEvent();
     public static event StartExerciseEvent onExerciseTriggered;
     public GameObject startExerciseButton = null;
-
-    public MeshRenderer goBackIconRenderer = null;
-    public MeshRenderer aboutIconRenderer = null;
+    
     public Material baseIconMaterial;
     public Material hoverIconMaterial;
+
+    //General
+    public MeshRenderer goBackIconRenderer = null;
+    public MeshRenderer aboutIconRenderer = null;
 
     [SerializeField]
     LayerMask layerMask;
@@ -40,7 +41,7 @@ public class InteractionsController : MonoBehaviour
     private bool getStartedHovered = false;
     private bool aboutCardHovered = false;
     private bool dailyCardHovered = false;
-    private bool startExerciseHovered = false;
+
     private bool goBackIconHovered = false;
     private bool aboutIconHovered = false;
 
@@ -66,11 +67,6 @@ public class InteractionsController : MonoBehaviour
 
     }
 
-    private void RemoveHover(InputAction.CallbackContext context)
-    {
-        Debug.Log("Removed Hover");
-    }
-
     private bool CheckRayCollision()
     {
         RaycastHit hit;
@@ -80,7 +76,7 @@ public class InteractionsController : MonoBehaviour
             getStartedHovered = false;
             dailyCardHovered = false;
             aboutCardHovered = false;
-            startExerciseHovered = false;
+
             goBackIconHovered = false;
             aboutIconHovered = false;
 
@@ -96,10 +92,6 @@ public class InteractionsController : MonoBehaviour
 
                 case "AboutCard":
                     aboutCardHovered = true;
-                    break;
-
-                case "StartExercise":
-                    startExerciseHovered = true;
                     break;
 
                 case "GoBackIcon":
@@ -118,7 +110,6 @@ public class InteractionsController : MonoBehaviour
             getStartedHovered = false;
             dailyCardHovered = false;
             aboutCardHovered = false;
-            startExerciseHovered = false;
             goBackIconHovered = false;
             aboutIconHovered = false;
             return false;
@@ -146,10 +137,6 @@ public class InteractionsController : MonoBehaviour
             dailyCardRenderer.material = darkBaseMaterial;
             if (aboutCardRenderer != null) aboutCardRenderer.material = darkHoverMaterial;
         }
-        else if (startExerciseHovered)
-        {
-            startExerciseRenderer.material = lightHoverMaterial;
-        }
         else if (goBackIconHovered)
         {
             goBackIconRenderer.material = hoverIconMaterial;
@@ -163,7 +150,6 @@ public class InteractionsController : MonoBehaviour
             if (getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
             if (dailyCardRenderer != null) dailyCardRenderer.material = darkBaseMaterial;
             if (aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
-            if (startExerciseRenderer != null) startExerciseRenderer.material = lightBaseMaterial;
             if (goBackIconRenderer != null) goBackIconRenderer.material = baseIconMaterial;
             if (aboutIconRenderer != null) aboutIconRenderer.material = baseIconMaterial;
         }
@@ -174,27 +160,47 @@ public class InteractionsController : MonoBehaviour
     {
         if (getStartedHovered)
         {
-            AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
-            SceneManager.LoadScene("MainMenu");
+            switch (AppStateHandler.Instance.currentScene)
+            {
+                case CurrentScene.SplashScreen:
+                    AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
+                    SceneManager.LoadScene("MainMenu");
+                    break;
+                case CurrentScene.BreathingExercise:
+                    startExerciseButton.SetActive(false);
+                    onExerciseTriggered.Invoke();
+                    break;
+            }
             
         }
         else if (dailyCardHovered)
         {
+            AppStateHandler.Instance.ChangeScene(CurrentScene.BreathingExercise);
             SceneManager.LoadScene("BreathingExercise");
         }
         else if (aboutCardHovered)
         {
+            
             SceneManager.LoadScene("About");
-        }else if (startExerciseHovered)
+        }
+        else if (goBackIconHovered)
         {
-            startExerciseButton.SetActive(false);
-            onExerciseTriggered.Invoke();
-        }else if (goBackIconHovered)
-        {
-            SceneManager.LoadScene("SplashScreen");
+            switch (AppStateHandler.Instance.currentScene) {
+                case CurrentScene.MainMenu:
+                    SceneManager.LoadScene("SplashScreen");
+                    break;
+                case CurrentScene.About:
+                    SceneManager.LoadScene("MainMenu");
+                    break;
+                case CurrentScene.BreathingExercise:
+                    SceneManager.LoadScene("MainMenu");
+                    break;
+            }
+            
         }
         else if (aboutIconHovered)
         {
+            AppStateHandler.Instance.ChangeScene(CurrentScene.About);
             SceneManager.LoadScene("About");
         }
     }

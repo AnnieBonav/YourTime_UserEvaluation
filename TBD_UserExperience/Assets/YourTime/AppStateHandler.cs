@@ -7,7 +7,7 @@ public enum CurrentScene { SplashScreen, MainMenu, BreathingExercise, About };
 public class AppStateHandler : MonoBehaviour
 {
     public static AppStateHandler Instance { get; private set; }
-    public CurrentScene currentScene { get; private set; }
+    public CurrentScene currentScene { get; private set; } //TODO: Implement stack for navigation
     private void Awake()
     {
         if (Instance != null && Instance != this)

@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4292138196
       objectReference: {fileID: 0}
+    - target: {fileID: 1069682537092584207, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1069682537094329058, guid: 4f7188436bf911649aa40c28e4608aff,
         type: 3}
       propertyPath: m_fontColor.b
@@ -46,6 +51,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4292138196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329068, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537285691152, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1069682537285691157, guid: 4f7188436bf911649aa40c28e4608aff,
         type: 3}
@@ -112,6 +127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InactiveCard
       objectReference: {fileID: 0}
+    - target: {fileID: 3165425220813677328, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3541140564790809900, guid: 4f7188436bf911649aa40c28e4608aff,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -121,6 +141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DailyCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223995128269904841, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f7188436bf911649aa40c28e4608aff, type: 3}
