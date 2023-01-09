@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6255083195198753969}
   - component: {fileID: 6255083195198753968}
+  - component: {fileID: 3924999419845708804}
   m_Layer: 0
   m_Name: UIInteraction
   m_TagString: Untagged
@@ -51,11 +52,24 @@ MonoBehaviour:
   aboutCardRenderer: {fileID: 0}
   darkBaseMaterial: {fileID: 2100000, guid: c8c0f9ebb8e2cb944be62e6e8fb08e86, type: 2}
   darkHoverMaterial: {fileID: 2100000, guid: 3e7473223e9dcff47b30c90dc599a851, type: 2}
-  startExerciseRenderer: {fileID: 0}
   startExerciseButton: {fileID: 0}
-  goBackRenderer: {fileID: 0}
   baseIconMaterial: {fileID: 2100000, guid: 7fd5d59a98ca37e4fa9b664c662b6f70, type: 2}
   hoverIconMaterial: {fileID: 2100000, guid: 5bd455481bb6c36409012691cac759cf, type: 2}
+  goBackIconRenderer: {fileID: 0}
+  aboutIconRenderer: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &3924999419845708804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255083195198753971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874a6cf9b615a5f46961d4e1b87e84fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: 

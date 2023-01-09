@@ -548,7 +548,6 @@ GameObject:
   - component: {fileID: 302047580008888}
   - component: {fileID: 3541140564790809900}
   - component: {fileID: 4572281846153000415}
-  - component: {fileID: 6241658411100117463}
   - component: {fileID: 5251621073904262571}
   m_Layer: 7
   m_Name: CardBase
@@ -635,19 +634,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1208.1157, y: 1495.1755, z: 1}
   m_Center: {x: -600.27655, y: 747.0875, z: 0}
---- !u!114 &6241658411100117463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6223995128269904841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 874a6cf9b615a5f46961d4e1b87e84fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActivityName: 
 --- !u!114 &5251621073904262571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +651,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6241658411100117463}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardInteraction, Assembly-CSharp
           m_MethodName: StartActivity
           m_Mode: 1

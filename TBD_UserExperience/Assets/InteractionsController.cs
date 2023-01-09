@@ -45,11 +45,34 @@ public class InteractionsController : MonoBehaviour
     private bool goBackIconHovered = false;
     private bool aboutIconHovered = false;
 
-    // Start is called before the first frame update
     private void Awake()
     {
         interactionController = new UserEvaluation();
-        //currentScene = CurrentScene.
+        if(AppStateHandler.Instance != null)
+        {
+            SetActiveScene();
+        }
+        
+    }
+
+    private void SetActiveScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        switch (currentScene.name)
+        {
+            case "SplashScreen":
+                AppStateHandler.Instance.ChangeScene(CurrentScene.SplashScreen);
+                break;
+            case "MainMenu":
+                AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
+                break;
+            case "BreathingExercise":
+                AppStateHandler.Instance.ChangeScene(CurrentScene.BreathingExercise);
+                break;
+            case "About":
+                AppStateHandler.Instance.ChangeScene(CurrentScene.About);
+                break;
+        }
     }
 
     private void OnEnable()
@@ -163,7 +186,6 @@ public class InteractionsController : MonoBehaviour
             switch (AppStateHandler.Instance.currentScene)
             {
                 case CurrentScene.SplashScreen:
-                    AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
                     SceneManager.LoadScene("MainMenu");
                     break;
                 case CurrentScene.BreathingExercise:
@@ -175,12 +197,10 @@ public class InteractionsController : MonoBehaviour
         }
         else if (dailyCardHovered)
         {
-            AppStateHandler.Instance.ChangeScene(CurrentScene.BreathingExercise);
             SceneManager.LoadScene("BreathingExercise");
         }
         else if (aboutCardHovered)
         {
-            
             SceneManager.LoadScene("About");
         }
         else if (goBackIconHovered)
@@ -200,9 +220,7 @@ public class InteractionsController : MonoBehaviour
         }
         else if (aboutIconHovered)
         {
-            AppStateHandler.Instance.ChangeScene(CurrentScene.About);
             SceneManager.LoadScene("About");
         }
     }
-
 }
