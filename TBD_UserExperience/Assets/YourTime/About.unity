@@ -837,7 +837,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dailyCardRenderer
       value: 
-      objectReference: {fileID: 2062442103628207476}
+      objectReference: {fileID: 0}
     - target: {fileID: 6255083195198753968, guid: 094b1f44ca5cdd241a4188756ff179b3,
         type: 3}
       propertyPath: goBackIconRenderer
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 1355564399668901255}
   - component: {fileID: 8873569008850770319}
   - component: {fileID: 7303269817341992435}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DailyCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

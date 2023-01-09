@@ -9,6 +9,7 @@ using static MyTimer;
 
 public class InteractionsController : MonoBehaviour
 {
+
     public UserEvaluation interactionController;
 
     //Splash Screen
@@ -47,6 +48,7 @@ public class InteractionsController : MonoBehaviour
     private void Awake()
     {
         interactionController = new UserEvaluation();
+        //currentScene = CurrentScene.
     }
 
     private void OnEnable()
@@ -128,6 +130,7 @@ public class InteractionsController : MonoBehaviour
     {
         
         CheckRayCollision();
+        Debug.Log(AppStateHandler.Instance.currentScene);
         if (getStartedHovered)
         {
             getStartedRenderer.material = lightHoverMaterial;
@@ -171,7 +174,9 @@ public class InteractionsController : MonoBehaviour
     {
         if (getStartedHovered)
         {
+            AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
             SceneManager.LoadScene("MainMenu");
+            
         }
         else if (dailyCardHovered)
         {
