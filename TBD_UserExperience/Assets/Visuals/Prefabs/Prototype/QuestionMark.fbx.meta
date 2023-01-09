@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3348ecf1e07791c459f2ba4e17610cae
+guid: d13765c0f32b00c4e830cb8997279588
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: tinker2_color_15277358
+      name: tinker_color_15277358
     second: {fileID: 2100000, guid: c8c0f9ebb8e2cb944be62e6e8fb08e86, type: 2}
   materials:
     materialImportMode: 2

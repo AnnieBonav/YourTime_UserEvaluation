@@ -45,12 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getStartedRenderer: {fileID: 0}
-  lightBaseMaterial: {fileID: 2100000, guid: eefaaa5cee30506459f98b60dc0a080a, type: 2}
-  lightHoverMaterial: {fileID: 2100000, guid: 17bf1c953ce1f0a4592acc6e9b47bc00, type: 2}
+  lightBaseMaterial: {fileID: 2100000, guid: 21279c86f4b07a24d92918011ef5398d, type: 2}
+  lightHoverMaterial: {fileID: 2100000, guid: 08d8aa4eba6d9684d88904661eac033a, type: 2}
   dailyCardRenderer: {fileID: 0}
   aboutCardRenderer: {fileID: 0}
-  darkBaseMaterial: {fileID: 2100000, guid: aa2bf87c2ecedb049bff425bfe169e38, type: 2}
-  darkHoverMaterial: {fileID: 2100000, guid: 2d1709f380ec01c4bacb1d8f0a053910, type: 2}
+  darkBaseMaterial: {fileID: 2100000, guid: c8c0f9ebb8e2cb944be62e6e8fb08e86, type: 2}
+  darkHoverMaterial: {fileID: 2100000, guid: 3e7473223e9dcff47b30c90dc599a851, type: 2}
+  startExerciseRenderer: {fileID: 0}
+  startExerciseButton: {fileID: 0}
+  goBackRenderer: {fileID: 0}
+  baseIconMaterial: {fileID: 2100000, guid: 7fd5d59a98ca37e4fa9b664c662b6f70, type: 2}
+  hoverIconMaterial: {fileID: 2100000, guid: 5bd455481bb6c36409012691cac759cf, type: 2}
   layerMask:
     serializedVersion: 2
     m_Bits: 128

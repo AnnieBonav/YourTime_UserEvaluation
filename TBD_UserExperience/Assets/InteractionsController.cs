@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static MyTimer;
+
+
 
 public class InteractionsController : MonoBehaviour
 {
@@ -19,12 +22,26 @@ public class InteractionsController : MonoBehaviour
     public Material darkBaseMaterial;
     public Material darkHoverMaterial;
 
+    //Exercise
+    public MeshRenderer startExerciseRenderer = null;
+    public delegate void StartExerciseEvent();
+    public static event StartExerciseEvent onExerciseTriggered;
+    public GameObject startExerciseButton = null;
+
+    public MeshRenderer goBackIconRenderer = null;
+    public MeshRenderer aboutIconRenderer = null;
+    public Material baseIconMaterial;
+    public Material hoverIconMaterial;
+
     [SerializeField]
     LayerMask layerMask;
 
     private bool getStartedHovered = false;
     private bool aboutCardHovered = false;
     private bool dailyCardHovered = false;
+    private bool startExerciseHovered = false;
+    private bool goBackIconHovered = false;
+    private bool aboutIconHovered = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -58,14 +75,39 @@ public class InteractionsController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
-            if (hit.transform.name == "GetStarted") getStartedHovered = true;
-            else getStartedHovered = false;
+            getStartedHovered = false;
+            dailyCardHovered = false;
+            aboutCardHovered = false;
+            startExerciseHovered = false;
+            goBackIconHovered = false;
+            aboutIconHovered = false;
 
-            if (hit.transform.name == "DailyCard") dailyCardHovered = true;
-            else dailyCardHovered = false;
+            switch (hit.transform.name)
+            {
+                case "GetStarted":
+                    getStartedHovered = true;
+                    break;
 
-            if (hit.transform.name == "AboutCard") aboutCardHovered = true;
-            else aboutCardHovered = false;
+                case "DailyCard":
+                    dailyCardHovered = true;
+                    break;
+
+                case "AboutCard":
+                    aboutCardHovered = true;
+                    break;
+
+                case "StartExercise":
+                    startExerciseHovered = true;
+                    break;
+
+                case "GoBackIcon":
+                    goBackIconHovered = true;
+                    break;
+
+                case "AboutIcon":
+                    aboutIconHovered = true;
+                    break;
+            }
 
             return true;
         }
@@ -74,6 +116,9 @@ public class InteractionsController : MonoBehaviour
             getStartedHovered = false;
             dailyCardHovered = false;
             aboutCardHovered = false;
+            startExerciseHovered = false;
+            goBackIconHovered = false;
+            aboutIconHovered = false;
             return false;
         }
         
@@ -81,10 +126,10 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckHover(InputAction.CallbackContext context)
     {
+        
         CheckRayCollision();
         if (getStartedHovered)
         {
-            //Debug.Log("Entered Hovered");
             getStartedRenderer.material = lightHoverMaterial;
             //return; //Check logic if I can leave only ifs and rteturns
         }
@@ -98,12 +143,26 @@ public class InteractionsController : MonoBehaviour
             dailyCardRenderer.material = darkBaseMaterial;
             aboutCardRenderer.material = darkHoverMaterial;
         }
+        else if (startExerciseHovered)
+        {
+            startExerciseRenderer.material = lightHoverMaterial;
+        }
+        else if (goBackIconHovered)
+        {
+            goBackIconRenderer.material = hoverIconMaterial;
+        }
+        else if (aboutIconHovered)
+        {
+            aboutIconRenderer.material = hoverIconMaterial;
+        }
         else
         {
-            //Debug.Log("Entered else");
-            if(getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
+            if (getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
             if (dailyCardRenderer != null) dailyCardRenderer.material = darkBaseMaterial;
             if (aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
+            if (startExerciseRenderer != null) startExerciseRenderer.material = lightBaseMaterial;
+            if (goBackIconRenderer != null) goBackIconRenderer.material = baseIconMaterial;
+            if (aboutIconRenderer != null) aboutIconRenderer.material = baseIconMaterial;
         }
     }
 
@@ -121,6 +180,13 @@ public class InteractionsController : MonoBehaviour
         else if (aboutCardHovered)
         {
             SceneManager.LoadScene("About");
+        }else if (startExerciseHovered)
+        {
+            startExerciseButton.SetActive(false);
+            onExerciseTriggered.Invoke();
+        }else if (goBackIconHovered)
+        {
+            SceneManager.LoadScene("SplashScreen");
         }
     }
 

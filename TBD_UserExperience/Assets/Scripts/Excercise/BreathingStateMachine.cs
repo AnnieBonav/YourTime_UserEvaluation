@@ -34,21 +34,21 @@ namespace BreathExercise
         
         private void StartExercise()
         {
-            
+            Debug.Log("I got raised");
             CheckState();
         }
 
         private void Awake()
-        {            
-            MyTimer.onTimerEnds += CheckState; //Attach the Event
+        {
+            InteractionsController.onExerciseTriggered += StartExercise; //Subscribes to event raised by button that starts exercise
+            MyTimer.onTimerEnds += CheckState;
             startExerciseClick += StartExercise;
 
             foreach (BreathingState state in BreathingStates)
             {
                 state.InstancePrefab(TitlesParent);
             }
-            currentState = BreathingStates[0]; // Define start Breathing State
-            currentState.ShowPrefab();
+            currentState = BreathingStates[0];
         }
 
         private void Start()
@@ -104,11 +104,11 @@ namespace BreathExercise
                     if (currentIterations < maxIterations) //Goes to Breath in if the current iterations are lower than max iterations
                     {
                         breathingParticles.Play(true);
-                        ChangeState(BreathingStates[1]);
+                        ChangeState(BreathingStates[2]);
                     }
                     else{ //Goes to end if the current iterations are higher than the max iterations
                         breathingParticles.Stop(true);
-                        ChangeState(BreathingStates[5]);
+                        ChangeState(BreathingStates[6]);
                     }
                     
                     break;

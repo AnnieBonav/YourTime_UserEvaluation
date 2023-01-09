@@ -3,7 +3,12 @@ guid: 36611be6ef9fa8d4db8dcbb5056dc0e3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tinker_color_15277358
+    second: {fileID: 2100000, guid: c8c0f9ebb8e2cb944be62e6e8fb08e86, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
