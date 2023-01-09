@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class CardInteraction : MonoBehaviour
 {
     public string SceneName;
-    public delegate void StartExerciseClick();
-    public static event StartExerciseClick startExerciseClick;
 
     public void OpenAbout()
     {
@@ -30,10 +28,5 @@ public class CardInteraction : MonoBehaviour
     public void GoBack()
     {
         AppStateHandler.Instance.GoBack();
-    }
-
-    public void GetStarted()
-    {
-        startExerciseClick?.Invoke();
     }
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bce81c8c5376a479e5a9e402b72556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToShow: {fileID: 919132149155446097, guid: 0d5c5b4ac28f55a4f99a6133f2eaaa08,
+  PrefabToShow: {fileID: 7271984934016030948, guid: bdc9024496cd3a24da281544d1e10489,
     type: 3}
   StateName: 1
-  StateDuration: 3
+  StateDuration: 20

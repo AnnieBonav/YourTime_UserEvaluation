@@ -27,6 +27,12 @@ namespace BreathExercise {
         public void ShowPrefab()
         {
             prefabShown.SetActive(true); //Change to visible or not visible
+
+            if(StateName == StateName.Start)
+            {
+                prefabShown.GetComponent<Animation>().Play();
+                Debug.Log("Tries animation");
+            }
         }
 
         public void HidePrefab()

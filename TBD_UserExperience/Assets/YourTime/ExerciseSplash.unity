@@ -249,6 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255083195198753968, guid: 094b1f44ca5cdd241a4188756ff179b3,
         type: 3}
+      propertyPath: getStartedRenderer
+      value: 
+      objectReference: {fileID: 1144883693}
+    - target: {fileID: 6255083195198753968, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
       propertyPath: goBackIconRenderer
       value: 
       objectReference: {fileID: 1711813855098896645}
@@ -648,6 +653,12 @@ PrefabInstance:
 --- !u!1 &1144883692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2915875350821704494, guid: c0e3934148575a345a0cb35652e4de9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144883691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1144883693 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2455624478422274185, guid: c0e3934148575a345a0cb35652e4de9c,
     type: 3}
   m_PrefabInstance: {fileID: 1144883691}
   m_PrefabAsset: {fileID: 0}

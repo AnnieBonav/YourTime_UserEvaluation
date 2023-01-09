@@ -17,6 +17,8 @@ namespace BreathExercise
         public GameObject TitlesParent;
         private BreathingState currentState;
 
+        public Animation numbersAnimation;
+
         [SerializeField]
         private List<BreathingState> BreathingStates = new List<BreathingState>();
 
@@ -24,31 +26,33 @@ namespace BreathExercise
         private int maxIterations;
 
         private int currentIterations;
-
-        public MyTimer ExcerciseTimer;
-
+        private MyTimer exerciseTimer;
         private bool isRunning = false;
 
         public ParticleSystem breathingParticles;
 
-        
-        private void StartExercise()
+        private void Awake() //Happens every time the scene is opened
         {
-            Debug.Log("I got raised");
-            CheckState();
-        }
-
-        private void Awake()
-        {
-            InteractionsController.onExerciseTriggered += StartExercise; //Subscribes to event raised by button that starts exercise
             MyTimer.onTimerEnds += CheckState;
-            startExerciseClick += StartExercise;
-
+            exerciseTimer = new MyTimer(5);
             foreach (BreathingState state in BreathingStates)
             {
                 state.InstancePrefab(TitlesParent);
             }
-            currentState = BreathingStates[0];
+            currentState = BreathingStates[1];
+            currentState.ShowPrefab();
+            //numbersAnimation.Play();
+            
+            isRunning = true;
+        }
+        private void OnDisable()
+        {
+            /*
+            foreach(Transform child in TitlesParent.transform)
+            {
+                Destroy(child);
+            }*/
+            Debug.Log("Breathing State was disabled");
         }
 
         private void Start()
@@ -60,7 +64,7 @@ namespace BreathExercise
         {
             currentState.HidePrefab();
             currentState = newState;
-            ExcerciseTimer.ModifyTime(currentState.StateDuration); //INstead of having these weird references I could have each objects observing each other
+            exerciseTimer.ModifyTime(currentState.StateDuration); //INstead of having these weird references I could have each objects observing each other
             currentState.ShowPrefab();
         }
 
@@ -68,7 +72,7 @@ namespace BreathExercise
         {
             if (isRunning)
             {
-                ExcerciseTimer.CheckStatus();
+                exerciseTimer.CheckStatus();
             }
         }
 
@@ -83,6 +87,7 @@ namespace BreathExercise
                     break;
 
                 case StateName.Start:
+
                     breathingParticles.Play(true);
                     ChangeState(BreathingStates[2]); //Goes to Breath In
                     break;

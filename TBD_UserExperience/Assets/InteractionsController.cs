@@ -22,10 +22,6 @@ public class InteractionsController : MonoBehaviour
     public Material darkBaseMaterial;
     public Material darkHoverMaterial;
 
-    //Exercise
-    public delegate void StartExerciseEvent();
-    public static event StartExerciseEvent onExerciseTriggered;
-    public GameObject startExerciseButton = null;    
 
     //General
     public MeshRenderer goBackIconRenderer = null;
