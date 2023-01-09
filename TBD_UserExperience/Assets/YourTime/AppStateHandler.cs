@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CurrentScene { SplashScreen, MainMenu, BreathingExercise, About };
+public enum CurrentScene { SplashScreen, MainMenu, ExerciseSplash, BreathingExercise, About };
 
 public class AppStateHandler : MonoBehaviour
 {

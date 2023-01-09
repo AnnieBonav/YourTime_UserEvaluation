@@ -66,6 +66,9 @@ public class InteractionsController : MonoBehaviour
             case "MainMenu":
                 AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
                 break;
+            case "ExerciseSplash":
+                AppStateHandler.Instance.ChangeScene(CurrentScene.ExerciseSplash);
+                break;
             case "BreathingExercise":
                 AppStateHandler.Instance.ChangeScene(CurrentScene.BreathingExercise);
                 break;
@@ -212,8 +215,11 @@ public class InteractionsController : MonoBehaviour
                 case CurrentScene.About:
                     SceneManager.LoadScene("MainMenu");
                     break;
-                case CurrentScene.BreathingExercise:
+                case CurrentScene.ExerciseSplash:
                     SceneManager.LoadScene("MainMenu");
+                    break;
+                case CurrentScene.BreathingExercise:
+                    SceneManager.LoadScene("ExerciseSplash");
                     break;
             }
             

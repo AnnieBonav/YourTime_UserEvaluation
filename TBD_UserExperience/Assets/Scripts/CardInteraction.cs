@@ -24,6 +24,9 @@ public class CardInteraction : MonoBehaviour
                     SceneManager.LoadScene("MainMenu");
                     break;
                 case CurrentScene.MainMenu:
+                    SceneManager.LoadScene("ExerciseSplash");
+                    break;
+                case CurrentScene.ExerciseSplash:
                     SceneManager.LoadScene("BreathingExercise");
                     break;
             }
@@ -47,8 +50,11 @@ public class CardInteraction : MonoBehaviour
                 Debug.Log("About here");
                 SceneManager.LoadScene("MainMenu");
                 break;
-            case CurrentScene.BreathingExercise:
+            case CurrentScene.ExerciseSplash:
                 SceneManager.LoadScene("MainMenu");
+                break;
+            case CurrentScene.BreathingExercise:
+                SceneManager.LoadScene("ExerciseSplash");
                 break;
         }
     }
