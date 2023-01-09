@@ -18,66 +18,35 @@ public class InteractionsController : MonoBehaviour
     public Material lightHoverMaterial;
 
     // Main Menu
-    public MeshRenderer dailyCardRenderer = null;
-    public MeshRenderer aboutCardRenderer = null;
+    public MeshRenderer cardRenderer = null;
     public Material darkBaseMaterial;
     public Material darkHoverMaterial;
 
     //Exercise
     public delegate void StartExerciseEvent();
     public static event StartExerciseEvent onExerciseTriggered;
-    public GameObject startExerciseButton = null;
-    
-    public Material baseIconMaterial;
-    public Material hoverIconMaterial;
+    public GameObject startExerciseButton = null;    
 
     //General
     public MeshRenderer goBackIconRenderer = null;
     public MeshRenderer aboutIconRenderer = null;
+    
+    public Material baseIconMaterial;
+    public Material hoverIconMaterial;
 
     [SerializeField]
     LayerMask layerMask;
 
-    private bool getStartedHovered = false;
-    private bool aboutCardHovered = false;
-    private bool dailyCardHovered = false;
-
+    private bool moveForwardHovered = false; //Indludes getSTarted and card
     private bool goBackIconHovered = false;
     private bool aboutIconHovered = false;
 
     private void Awake()
     {
         interactionController = new UserEvaluation();
-        if(AppStateHandler.Instance != null)
-        {
-            SetActiveScene(); //Every time a new scene is opened this is called and the scene changes. Maybe a listener for "Scene changes" exists and then this handling can be done by the App Handler
-        }
-        
     }
 
-    private void SetActiveScene()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        switch (currentScene.name)
-        {
-            case "SplashScreen":
-                AppStateHandler.Instance.SetActiveScene(CurrentScene.SplashScreen);
-                break;
-            case "MainMenu":
-                AppStateHandler.Instance.SetActiveScene(CurrentScene.MainMenu);
-                break;
-            case "ExerciseSplash":
-                AppStateHandler.Instance.SetActiveScene(CurrentScene.ExerciseSplash);
-                break;
-            case "BreathingExercise":
-                AppStateHandler.Instance.SetActiveScene(CurrentScene.BreathingExercise);
-                break;
-            case "About":
-                AppStateHandler.Instance.SetActiveScene(CurrentScene.About);
-                break;
-        }
-    }
-
+    
     private void OnEnable()
     {
         interactionController.Enable();
@@ -99,43 +68,26 @@ public class InteractionsController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
-            getStartedHovered = false;
-            dailyCardHovered = false;
-            aboutCardHovered = false;
-
+            moveForwardHovered = false;
             goBackIconHovered = false;
             aboutIconHovered = false;
 
-            switch (hit.transform.name)
+            if(hit.transform.name == "GetStarted" || hit.transform.name == "DailyCard")
             {
-                case "GetStarted":
-                    getStartedHovered = true;
-                    break;
-
-                case "DailyCard":
-                    dailyCardHovered = true;
-                    break;
-
-                case "AboutCard":
-                    aboutCardHovered = true;
-                    break;
-
-                case "GoBackIcon":
-                    goBackIconHovered = true;
-                    break;
-
-                case "AboutIcon":
-                    aboutIconHovered = true;
-                    break;
+                moveForwardHovered = true;
+            }else if (hit.transform.name == "AboutIcon")
+            {
+                aboutIconHovered= true;
+            }else if(hit.transform.name == "GoBackIcon" || hit.transform.name == "CloseIcon")
+            {
+                goBackIconHovered = true;
             }
 
             return true;
         }
         else
         {
-            getStartedHovered = false;
-            dailyCardHovered = false;
-            aboutCardHovered = false;
+            moveForwardHovered = false;
             goBackIconHovered = false;
             aboutIconHovered = false;
             return false;
@@ -145,23 +97,12 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckHover(InputAction.CallbackContext context)
     {
-        
         CheckRayCollision();
-        Debug.Log(AppStateHandler.Instance.currentScene);
-        if (getStartedHovered)
+        if (moveForwardHovered)
         {
-            getStartedRenderer.material = lightHoverMaterial;
+            if(getStartedRenderer != null) getStartedRenderer.material = lightHoverMaterial;
+            if(cardRenderer != null) cardRenderer.material = darkHoverMaterial;
             //return; //Check logic if I can leave only ifs and rteturns
-        }
-        else if (dailyCardHovered)
-        {
-            dailyCardRenderer.material = darkHoverMaterial;
-            if(aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
-        }
-        else if (aboutCardHovered)
-        {
-            dailyCardRenderer.material = darkBaseMaterial;
-            if (aboutCardRenderer != null) aboutCardRenderer.material = darkHoverMaterial;
         }
         else if (goBackIconHovered)
         {
@@ -174,8 +115,7 @@ public class InteractionsController : MonoBehaviour
         else
         {
             if (getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
-            if (dailyCardRenderer != null) dailyCardRenderer.material = darkBaseMaterial;
-            if (aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
+            if (cardRenderer != null) cardRenderer.material = darkBaseMaterial;
             if (goBackIconRenderer != null) goBackIconRenderer.material = baseIconMaterial;
             if (aboutIconRenderer != null) aboutIconRenderer.material = baseIconMaterial;
         }
@@ -184,49 +124,8 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        if (getStartedHovered)
-        {
-            switch (AppStateHandler.Instance.currentScene)
-            {
-                case CurrentScene.SplashScreen:
-                    SceneManager.LoadScene("MainMenu");
-                    break;
-                case CurrentScene.BreathingExercise:
-                    startExerciseButton.SetActive(false);
-                    onExerciseTriggered.Invoke();
-                    break;
-            }
-            
-        }
-        else if (dailyCardHovered)
-        {
-            SceneManager.LoadScene("BreathingExercise");
-        }
-        else if (aboutCardHovered)
-        {
-            SceneManager.LoadScene("About");
-        }
-        else if (goBackIconHovered)
-        {
-            switch (AppStateHandler.Instance.currentScene) {
-                case CurrentScene.MainMenu:
-                    SceneManager.LoadScene("SplashScreen");
-                    break;
-                case CurrentScene.About:
-                    SceneManager.LoadScene("MainMenu");
-                    break;
-                case CurrentScene.ExerciseSplash:
-                    SceneManager.LoadScene("MainMenu");
-                    break;
-                case CurrentScene.BreathingExercise:
-                    SceneManager.LoadScene("ExerciseSplash");
-                    break;
-            }
-            
-        }
-        else if (aboutIconHovered)
-        {
-            SceneManager.LoadScene("About");
-        }
+        if (moveForwardHovered) AppStateHandler.Instance.ChangeScene(false);
+        else if (aboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
+        else if (goBackIconHovered) AppStateHandler.Instance.GoBack();
     }
 }

@@ -35,17 +35,20 @@ public class AppStateHandler : MonoBehaviour
         Debug.Log("Start got called"); //Only gets called the frist time the app starts
     }
 
-    public void SetActiveScene(CurrentScene openedScene)//Gets called after the scene changes
+    public void SetActiveScene(CurrentScene openedScene)
     {
         navigationStack.Add(openedScene);
         Instance.currentScene = navigationStack.Last();
     }
 
+
     public void ChangeScene(bool changeToAbout) //TODO: Change so where to go is not hard coded
     {
+        Debug.Log(navigationStack);
         if (changeToAbout)
         {
             SceneManager.LoadScene("About");
+            Instance.SetActiveScene(CurrentScene.About);
         }
         else
         {
@@ -53,15 +56,23 @@ public class AppStateHandler : MonoBehaviour
             {
                 case CurrentScene.SplashScreen:
                     SceneManager.LoadScene("MainMenu");
+                    Instance.SetActiveScene(CurrentScene.MainMenu);
                     break;
                 case CurrentScene.MainMenu:
                     SceneManager.LoadScene("ExerciseSplash");
+                    Instance.SetActiveScene(CurrentScene.ExerciseSplash);
                     break;
                 case CurrentScene.ExerciseSplash:
                     SceneManager.LoadScene("BreathingExercise");
+                    Instance.SetActiveScene(CurrentScene.BreathingExercise);
                     break;
                 case CurrentScene.BreathingExercise:
                     SceneManager.LoadScene("AfterExercise");
+                    Instance.SetActiveScene(CurrentScene.AfterExercise);
+                    break;
+                case CurrentScene.AfterExercise:
+                    SceneManager.LoadScene("MainMenu");
+                    Instance.SetActiveScene(CurrentScene.MainMenu);
                     break;
             }
         }

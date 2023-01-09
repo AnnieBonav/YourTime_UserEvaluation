@@ -435,6 +435,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89daaa62e436ee14f8e11e9b6367132c, type: 3}
+--- !u!23 &587500089 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8155490183804684508, guid: 89daaa62e436ee14f8e11e9b6367132c,
+    type: 3}
+  m_PrefabInstance: {fileID: 587500088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705369233
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 1411950169050327051, guid: f8bd70ec81c2d5848a512dce7a14370e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4432515036605228489, guid: f8bd70ec81c2d5848a512dce7a14370e,
         type: 3}
       propertyPath: m_IsActive
@@ -649,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732808951507650, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4802744215004400, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -796,7 +807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: goBackIconRenderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 587500089}
     - target: {fileID: 6255083195198753969, guid: 094b1f44ca5cdd241a4188756ff179b3,
         type: 3}
       propertyPath: m_RootOrder
