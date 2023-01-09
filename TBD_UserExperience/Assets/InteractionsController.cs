@@ -136,12 +136,12 @@ public class InteractionsController : MonoBehaviour
         else if (dailyCardHovered)
         {
             dailyCardRenderer.material = darkHoverMaterial;
-            aboutCardRenderer.material = darkBaseMaterial;
+            if(aboutCardRenderer != null) aboutCardRenderer.material = darkBaseMaterial;
         }
         else if (aboutCardHovered)
         {
             dailyCardRenderer.material = darkBaseMaterial;
-            aboutCardRenderer.material = darkHoverMaterial;
+            if (aboutCardRenderer != null) aboutCardRenderer.material = darkHoverMaterial;
         }
         else if (startExerciseHovered)
         {
@@ -187,6 +187,10 @@ public class InteractionsController : MonoBehaviour
         }else if (goBackIconHovered)
         {
             SceneManager.LoadScene("SplashScreen");
+        }
+        else if (aboutIconHovered)
+        {
+            SceneManager.LoadScene("About");
         }
     }
 
