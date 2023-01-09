@@ -50,7 +50,7 @@ public class InteractionsController : MonoBehaviour
         interactionController = new UserEvaluation();
         if(AppStateHandler.Instance != null)
         {
-            SetActiveScene();
+            SetActiveScene(); //Every time a new scene is opened this is called and the scene changes. Maybe a listener for "Scene changes" exists and then this handling can be done by the App Handler
         }
         
     }
@@ -61,19 +61,19 @@ public class InteractionsController : MonoBehaviour
         switch (currentScene.name)
         {
             case "SplashScreen":
-                AppStateHandler.Instance.ChangeScene(CurrentScene.SplashScreen);
+                AppStateHandler.Instance.SetActiveScene(CurrentScene.SplashScreen);
                 break;
             case "MainMenu":
-                AppStateHandler.Instance.ChangeScene(CurrentScene.MainMenu);
+                AppStateHandler.Instance.SetActiveScene(CurrentScene.MainMenu);
                 break;
             case "ExerciseSplash":
-                AppStateHandler.Instance.ChangeScene(CurrentScene.ExerciseSplash);
+                AppStateHandler.Instance.SetActiveScene(CurrentScene.ExerciseSplash);
                 break;
             case "BreathingExercise":
-                AppStateHandler.Instance.ChangeScene(CurrentScene.BreathingExercise);
+                AppStateHandler.Instance.SetActiveScene(CurrentScene.BreathingExercise);
                 break;
             case "About":
-                AppStateHandler.Instance.ChangeScene(CurrentScene.About);
+                AppStateHandler.Instance.SetActiveScene(CurrentScene.About);
                 break;
         }
     }

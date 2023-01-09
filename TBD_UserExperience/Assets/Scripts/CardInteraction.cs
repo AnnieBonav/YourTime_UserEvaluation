@@ -11,52 +11,25 @@ public class CardInteraction : MonoBehaviour
 
     public void OpenAbout()
     {
-        SceneManager.LoadScene("About");
+        AppStateHandler.Instance.ChangeScene(true);
     }
 
-    public void OpenNextScene()
+    public void OpenNextScene() //Parameters in functions are not seen in the inspector inside Event Trigger
     {
         if(SceneName == "")
         {
-            switch (AppStateHandler.Instance.currentScene)
-            {
-                case CurrentScene.SplashScreen:
-                    SceneManager.LoadScene("MainMenu");
-                    break;
-                case CurrentScene.MainMenu:
-                    SceneManager.LoadScene("ExerciseSplash");
-                    break;
-                case CurrentScene.ExerciseSplash:
-                    SceneManager.LoadScene("BreathingExercise");
-                    break;
-            }
+            AppStateHandler.Instance.ChangeScene(false);
         }
         else
         {
-            SceneManager.LoadScene(SceneName);
+            SceneManager.LoadScene(SceneName); //In case I want to go somewhere not linear TODO: Change
         }
         
     }
 
     public void GoBack()
     {
-        Debug.Log("About: " + AppStateHandler.Instance.currentScene);
-        switch (AppStateHandler.Instance.currentScene)
-        {
-            case CurrentScene.MainMenu:
-                SceneManager.LoadScene("SplashScreen");
-                break;
-            case CurrentScene.About:
-                Debug.Log("About here");
-                SceneManager.LoadScene("MainMenu");
-                break;
-            case CurrentScene.ExerciseSplash:
-                SceneManager.LoadScene("MainMenu");
-                break;
-            case CurrentScene.BreathingExercise:
-                SceneManager.LoadScene("ExerciseSplash");
-                break;
-        }
+        AppStateHandler.Instance.GoBack();
     }
 
     public void GetStarted()
