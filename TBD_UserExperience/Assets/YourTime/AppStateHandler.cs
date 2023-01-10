@@ -41,6 +41,12 @@ public class AppStateHandler : MonoBehaviour
         Instance.currentScene = navigationStack.Last();
     }
 
+    public void SubmitStars(int StarsNumber)
+    {
+        Debug.Log("Grade: " + StarsNumber);
+        ChangeScene(false);
+    }
+
 
     public void ChangeScene(bool changeToAbout) //TODO: Change so where to go is not hard coded
     {

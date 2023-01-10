@@ -48,18 +48,25 @@ MonoBehaviour:
   getStartedRenderer: {fileID: 0}
   lightBaseMaterial: {fileID: 2100000, guid: 21279c86f4b07a24d92918011ef5398d, type: 2}
   lightHoverMaterial: {fileID: 2100000, guid: 08d8aa4eba6d9684d88904661eac033a, type: 2}
-  dailyCardRenderer: {fileID: 0}
-  aboutCardRenderer: {fileID: 0}
+  cardRenderer: {fileID: 0}
   darkBaseMaterial: {fileID: 2100000, guid: c8c0f9ebb8e2cb944be62e6e8fb08e86, type: 2}
   darkHoverMaterial: {fileID: 2100000, guid: 3e7473223e9dcff47b30c90dc599a851, type: 2}
-  startExerciseButton: {fileID: 0}
-  baseIconMaterial: {fileID: 2100000, guid: 7fd5d59a98ca37e4fa9b664c662b6f70, type: 2}
-  hoverIconMaterial: {fileID: 2100000, guid: 5bd455481bb6c36409012691cac759cf, type: 2}
   goBackIconRenderer: {fileID: 0}
   aboutIconRenderer: {fileID: 0}
+  baseIconMaterial: {fileID: 2100000, guid: 7fd5d59a98ca37e4fa9b664c662b6f70, type: 2}
+  hoverIconMaterial: {fileID: 2100000, guid: 5bd455481bb6c36409012691cac759cf, type: 2}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  starsMask:
+    serializedVersion: 2
+    m_Bits: 512
+  star1: {fileID: 0}
+  star2: {fileID: 0}
+  star3: {fileID: 0}
+  star4: {fileID: 0}
+  star5: {fileID: 0}
+  activatedStar: {fileID: 0}
 --- !u!114 &3924999419845708804
 MonoBehaviour:
   m_ObjectHideFlags: 0

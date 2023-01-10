@@ -15,6 +15,9 @@ namespace BreathExercise
     public class BreathingStateMachine : MonoBehaviour
     {
         public GameObject TitlesParent;
+        public GameObject ParticleSystemParent;
+        public GameObject ParticleSystem;
+
         private BreathingState currentState;
 
         public Animation numbersAnimation;
@@ -29,20 +32,24 @@ namespace BreathExercise
         private MyTimer exerciseTimer;
         private bool isRunning = false;
 
-        public ParticleSystem breathingParticles;
+        private GameObject particleSystemInstance = null;
+
+        public GameObject closeButton = null;
 
         private void Awake() //Happens every time the scene is opened
         {
             MyTimer.onTimerEnds += CheckState;
             exerciseTimer = new MyTimer(5);
+            particleSystemInstance = Instantiate(ParticleSystem);
+            particleSystemInstance.transform.SetParent(ParticleSystemParent.transform, false);
+
             foreach (BreathingState state in BreathingStates)
             {
                 state.InstancePrefab(TitlesParent);
             }
+            if (closeButton != null) closeButton.SetActive(false);
             currentState = BreathingStates[1];
-            currentState.ShowPrefab();
-            //numbersAnimation.Play();
-            
+            currentState.ShowPrefab();            
             isRunning = true;
         }
         private void OnDisable()
@@ -52,6 +59,7 @@ namespace BreathExercise
             {
                 Destroy(child);
             }*/
+            MyTimer.onTimerEnds -= CheckState;
             Debug.Log("Breathing State was disabled");
         }
 
@@ -87,8 +95,7 @@ namespace BreathExercise
                     break;
 
                 case StateName.Start:
-
-                    breathingParticles.Play(true);
+                    particleSystemInstance.GetComponent<ParticleSystem>().Play(true);
                     ChangeState(BreathingStates[2]); //Goes to Breath In
                     break;
 
@@ -108,11 +115,11 @@ namespace BreathExercise
                 case StateName.HoldOut: 
                     if (currentIterations < maxIterations) //Goes to Breath in if the current iterations are lower than max iterations
                     {
-                        breathingParticles.Play(true);
+                        particleSystemInstance.GetComponent<ParticleSystem>().Play(true);
                         ChangeState(BreathingStates[2]);
                     }
                     else{ //Goes to end if the current iterations are higher than the max iterations
-                        breathingParticles.Stop(true);
+                        particleSystemInstance.GetComponent<ParticleSystem>().Stop(true);
                         ChangeState(BreathingStates[6]);
                     }
                     
@@ -120,7 +127,8 @@ namespace BreathExercise
 
                 case StateName.End:
                     Debug.Log("This has ended");
-                    MyTimer.onTimerEnds -= CheckState; //Unsuscribe to timer
+                    if(closeButton != null) closeButton.SetActive(true);
+                     MyTimer.onTimerEnds -= CheckState; //Unsuscribe to timer
                     isRunning = false;
                     break;
 
