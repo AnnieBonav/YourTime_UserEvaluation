@@ -13,29 +13,29 @@ public class InteractionsController : MonoBehaviour
     public UserEvaluation interactionController;
 
     //Splash Screen
-    public MeshRenderer getStartedRenderer = null;
-    public Material lightBaseMaterial;
-    public Material lightHoverMaterial;
+    public MeshRenderer ButtonRenderer = null;
+    public Material ButtonBaseMaterial;
+    public Material ButtonHoverMaterial;
 
     // Main Menu
-    public MeshRenderer cardRenderer = null;
-    public Material darkBaseMaterial;
-    public Material darkHoverMaterial;
+    public MeshRenderer CardRenderer = null;
+    public Material CardBaseMaterial;
+    public Material CardHoverMaterial;
 
 
     //General
-    public MeshRenderer goBackIconRenderer = null;
-    public MeshRenderer aboutIconRenderer = null;
+    public MeshRenderer GoBackIconRenderer = null;
+    public MeshRenderer AboutIconRenderer = null;
     
-    public Material baseIconMaterial;
-    public Material hoverIconMaterial;
+    public Material IconBaseMaterial;
+    public Material IconHoverMaterial;
 
     [SerializeField]
     LayerMask layerMask;
 
-    private bool moveForwardHovered = false; //Indludes getSTarted and card
-    private bool goBackIconHovered = false;
-    private bool aboutIconHovered = false;
+    private bool GoForwardHovered = false; //Indludes getSTarted and card
+    private bool GoBackHovered = false;
+    private bool AboutIconHovered = false;
 
     public MeshRenderer star1 = null;
     public MeshRenderer star2 = null;
@@ -79,21 +79,21 @@ public class InteractionsController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10, layerMask))
         {
-            Debug.Log(hit.transform.name);
-            Debug.Log("Entered here");
-            moveForwardHovered = false;
-            goBackIconHovered = false;
-            aboutIconHovered = false;
+            GoForwardHovered = false;
+            GoBackHovered = false;
+            AboutIconHovered = false;
 
             if(hit.transform.name == "GetStarted" || hit.transform.name == "DailyCard")
             {
-                moveForwardHovered = true;
+                GoForwardHovered = true;
             }else if (hit.transform.name == "AboutIcon")
             {
-                aboutIconHovered= true;
+                AboutIconHovered= true;
+                Debug.Log(AboutIconHovered);
+
             }else if(hit.transform.name == "GoBackIcon" || hit.transform.name == "CloseIcon")
             {
-                goBackIconHovered = true;
+                GoBackHovered = true;
             }else if (hit.transform.name == "1") //A for loop kills it
             {
                 star1Hovered = true;
@@ -119,14 +119,13 @@ public class InteractionsController : MonoBehaviour
             {
                 star5Hovered = true;
             }
-
             return true;
         }
         else
         {
-            moveForwardHovered = false;
-            goBackIconHovered = false;
-            aboutIconHovered = false;
+            GoForwardHovered = false;
+            GoBackHovered = false;
+            AboutIconHovered = false;
 
             star1Hovered = false;
             star2Hovered = false;
@@ -142,19 +141,19 @@ public class InteractionsController : MonoBehaviour
     private void CheckHover(InputAction.CallbackContext context)
     {
         CheckRayCollision();
-        if (moveForwardHovered)
+        if (GoForwardHovered)
         {
-            if(getStartedRenderer != null) getStartedRenderer.material = lightHoverMaterial;
-            if(cardRenderer != null) cardRenderer.material = darkHoverMaterial;
+            if(ButtonRenderer != null) ButtonRenderer.material = ButtonHoverMaterial;
+            if(CardRenderer != null) CardRenderer.material = CardHoverMaterial;
             //return; //Check logic if I can leave only ifs and rteturns
         }
-        else if (goBackIconHovered)
+        else if (GoBackHovered)
         {
-            goBackIconRenderer.material = hoverIconMaterial;
+            GoBackIconRenderer.material = IconHoverMaterial;
         }
-        else if (aboutIconHovered)
+        else if (AboutIconHovered)
         {
-            aboutIconRenderer.material = hoverIconMaterial;
+            AboutIconRenderer.material = IconHoverMaterial;
         }
         else if (star1Hovered)
         {
@@ -188,9 +187,10 @@ public class InteractionsController : MonoBehaviour
         }
         else
         {
-            if (getStartedRenderer != null) getStartedRenderer.material = lightBaseMaterial;
-            if (cardRenderer != null) cardRenderer.material = darkBaseMaterial;
-            if (goBackIconRenderer != null) goBackIconRenderer.material = baseIconMaterial;
+            if (ButtonRenderer != null) ButtonRenderer.material = ButtonBaseMaterial;
+            if (CardRenderer != null) CardRenderer.material = CardBaseMaterial;
+            if (GoBackIconRenderer != null) GoBackIconRenderer.material = IconBaseMaterial;
+            if (AboutIconRenderer != null) AboutIconRenderer.material = IconBaseMaterial;
 
 
             if (star1 != null) star1.material = inactiveStar;
@@ -204,9 +204,9 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        if (moveForwardHovered) AppStateHandler.Instance.ChangeScene(false);
-        else if (aboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
-        else if (goBackIconHovered) AppStateHandler.Instance.GoBack();
+        if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
+        else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
+        else if (GoBackHovered) AppStateHandler.Instance.GoBack();
 
         else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);
         else if (star2Hovered) AppStateHandler.Instance.SubmitStars(2);

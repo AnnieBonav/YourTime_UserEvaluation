@@ -77,6 +77,7 @@ public class AppStateHandler : MonoBehaviour
                     Instance.SetActiveScene(CurrentScene.AfterExercise);
                     break;
                 case CurrentScene.AfterExercise:
+                    CloseExercise();
                     SceneManager.LoadScene("MainMenu");
                     Instance.SetActiveScene(CurrentScene.MainMenu);
                     break;
@@ -84,9 +85,27 @@ public class AppStateHandler : MonoBehaviour
         }
     }
 
+    public void CloseExercise()
+    {
+        Debug.Log(navigationStack);
+        for(int i = navigationStack.Count - 1; i > navigationStack.IndexOf(CurrentScene.MainMenu); i--)
+        {
+            Debug.Log("Remove: " + i + " " + navigationStack[i]);
+            navigationStack.RemoveAt(navigationStack.Count - 1);
+            
+        }
+    }
+
     public void GoBack()
     {
-        navigationStack.RemoveAt(navigationStack.Count - 1); //Pop the last one to change to the new current
+        if (currentScene == CurrentScene.AfterExercise)
+        {
+            CloseExercise();
+        }
+        else
+        {
+            navigationStack.RemoveAt(navigationStack.Count - 1); //Pop the last one to change to the new current
+        }
         Instance.currentScene = navigationStack.Last();
 
         switch (Instance.currentScene)
@@ -107,6 +126,7 @@ public class AppStateHandler : MonoBehaviour
                 SceneManager.LoadScene("AfterExercise");
                 break;
         }
+        
     }
 
 }
