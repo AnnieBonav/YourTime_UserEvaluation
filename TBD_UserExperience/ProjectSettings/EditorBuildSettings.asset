@@ -6,26 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Prototype/MainMenuTouch.unity
-    guid: 789eab994b4b93e4c826ec3787380f42
-  - enabled: 0
-    path: Assets/Scenes/TestScenes/SimpleUI.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/SplashScreen.unity
+    guid: 65552dbf99a5c7b4e93345a889987612
   - enabled: 1
-    path: Assets/Scenes/Prototype/ActivityPrototype.unity
-    guid: 92598e2d0016cd0478b94e8b6b4ef62d
-  - enabled: 0
-    path: Assets/Scenes/Prototype/Timer.unity
-    guid: ddcfeb094d59cf04e906d2fd65f30697
+    path: Assets/Scenes/MainMenu.unity
+    guid: d3a1c5de5b902754b9366b764058c830
   - enabled: 1
-    path: Assets/Scenes/Prototype/MainMenu.unity
-    guid: 190f3f4a59091ed40b8e91fefa153527
+    path: Assets/Scenes/About.unity
+    guid: 559584fb8a1f88c4ea18eaa3073c21b2
   - enabled: 1
-    path: Assets/Scenes/Prototype/AboutScene.unity
-    guid: bf4bf7fa813160346b6b89e1e386ad1a
-  - enabled: 0
-    path: Assets/Scenes/Prototype/Empty.unity
-    guid: 2bcac2e691e47164a844ceae899e52cc
+    path: Assets/Scenes/ExerciseSplash.unity
+    guid: 6e3b3ffe744e61c40840e029b959a09b
+  - enabled: 1
+    path: Assets/Scenes/BreathingExercise.unity
+    guid: ac41f46c63bbaaa4f9c3c78bb25d9c93
+  - enabled: 1
+    path: Assets/Scenes/AfterExercise.unity
+    guid: 54a4314f52c2fb046a4c5507539b31cb
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f00a701745138e6489beae89b71b859b,
       type: 2}

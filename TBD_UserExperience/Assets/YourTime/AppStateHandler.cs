@@ -79,7 +79,7 @@ public class AppStateHandler : MonoBehaviour
                 case CurrentScene.AfterExercise:
                     CloseExercise();
                     SceneManager.LoadScene("MainMenu");
-                    Instance.SetActiveScene(CurrentScene.MainMenu);
+                    Instance.currentScene = navigationStack.Last();
                     break;
             }
         }

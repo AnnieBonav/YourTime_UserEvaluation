@@ -130,6 +130,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839083947}
     m_Modifications:
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HoverStar2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStar2
+      objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_RootOrder
@@ -280,6 +304,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839083947}
     m_Modifications:
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStar1
+      objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_RootOrder
@@ -288,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.000000059604645
       objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
@@ -340,11 +380,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8913988304675666962, guid: 8598022a7efd89d46adea409f5e2a395,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
 --- !u!23 &708905060 stripped
@@ -366,6 +401,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839083947}
     m_Modifications:
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HoverStar4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStar4
+      objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_RootOrder
@@ -447,6 +506,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: star1
+      value: 
+      objectReference: {fileID: 708905060}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: star2
+      value: 
+      objectReference: {fileID: 445283536}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: star3
+      value: 
+      objectReference: {fileID: 1935674328}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: star4
+      value: 
+      objectReference: {fileID: 725451959}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: star5
+      value: 
+      objectReference: {fileID: 1951962210}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: ActiveStar
+      value: 
+      objectReference: {fileID: 2100000, guid: 41dfb3c7ac726054eb78e118d955a87f, type: 2}
+    - target: {fileID: 3924999419845708804, guid: 094b1f44ca5cdd241a4188756ff179b3,
+        type: 3}
+      propertyPath: InactiveStar
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ffb16a91f7b6e344a8108bd78723f41, type: 2}
     - target: {fileID: 6255083195198753968, guid: 094b1f44ca5cdd241a4188756ff179b3,
         type: 3}
       propertyPath: star1
@@ -983,6 +1077,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839083947}
     m_Modifications:
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HoverStar3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStar3
+      objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_RootOrder
@@ -1064,6 +1182,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839083947}
     m_Modifications:
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 763568365}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HoverStar5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454317229, guid: 8598022a7efd89d46adea409f5e2a395, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HoverStar5
+      objectReference: {fileID: 0}
     - target: {fileID: 8142237157245691560, guid: 8598022a7efd89d46adea409f5e2a395,
         type: 3}
       propertyPath: m_RootOrder
