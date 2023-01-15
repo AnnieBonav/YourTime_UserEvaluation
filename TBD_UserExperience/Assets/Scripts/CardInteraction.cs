@@ -5,10 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class CardInteraction : MonoBehaviour
 {
-    public string ActivityName;
+    public string SceneName;
 
-    public void StartActivity()
+    public void OpenAbout()
     {
-        SceneManager.LoadScene(ActivityName);
-    } 
+        AppStateHandler.Instance.ChangeScene(true);
+    }
+
+    public void OpenNextScene() //Parameters in functions are not seen in the inspector inside Event Trigger
+    {
+        if(SceneName == "")
+        {
+            AppStateHandler.Instance.ChangeScene(false);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneName); //In case I want to go somewhere not linear TODO: Change
+        }
+        
+    }
+
+    public void GoBack()
+    {
+        AppStateHandler.Instance.GoBack();
+    }
 }

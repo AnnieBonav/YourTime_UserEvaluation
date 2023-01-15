@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7964587674734523037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1069682537092584205, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537092584205, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537092584205, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537092584205, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292138196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537092584207, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329058, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329058, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329058, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329058, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292138196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537094329068, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537285691152, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069682537285691157, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cba5c3687234170419f5eece6361e0e3, type: 2}
+    - target: {fileID: 1069682537286966691, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352578691602135466, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165425220813677328, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Name
+      value: InactiveCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165425220813677328, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541140564790809900, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c28e833b02d55854fbc1c4d48fcc76e7, type: 2}
+    - target: {fileID: 6223995128269904841, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Name
+      value: DailyCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223995128269904841, guid: 4f7188436bf911649aa40c28e4608aff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5251621073904262571, guid: 4f7188436bf911649aa40c28e4608aff, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4f7188436bf911649aa40c28e4608aff, type: 3}

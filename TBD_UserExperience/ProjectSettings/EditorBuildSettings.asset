@@ -5,20 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Prototype/MainMenuTouch.unity
+    guid: 789eab994b4b93e4c826ec3787380f42
   - enabled: 0
     path: Assets/Scenes/TestScenes/SimpleUI.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Prototype/ActivityPrototype.unity
     guid: 92598e2d0016cd0478b94e8b6b4ef62d
+  - enabled: 0
+    path: Assets/Scenes/Prototype/Timer.unity
+    guid: ddcfeb094d59cf04e906d2fd65f30697
   - enabled: 1
     path: Assets/Scenes/Prototype/MainMenu.unity
     guid: 190f3f4a59091ed40b8e91fefa153527
   - enabled: 1
     path: Assets/Scenes/Prototype/AboutScene.unity
     guid: bf4bf7fa813160346b6b89e1e386ad1a
+  - enabled: 0
+    path: Assets/Scenes/Prototype/Empty.unity
+    guid: 2bcac2e691e47164a844ceae899e52cc
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f00a701745138e6489beae89b71b859b,
+      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 6b6c1d869988cb74398444f03f02f92d,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 07104141a3d826049befcf985d976164,
       type: 2}
