@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorVisual: {fileID: 1525749097544336}
   maxLength: 10
+  _laserBeamBehavior: 0
 --- !u!120 &120006741097097638
 LineRenderer:
   m_ObjectHideFlags: 0
