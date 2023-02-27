@@ -9,6 +9,9 @@ using static MyTimer;
 
 public class InteractionsController : MonoBehaviour
 {
+    public delegate void ButtonClicked();
+    public static event ButtonClicked OnButtonClicked;
+
 
     public UserEvaluation interactionController;
 
@@ -205,7 +208,11 @@ public class InteractionsController : MonoBehaviour
     private void CheckClick(InputAction.CallbackContext context)
     {
         //if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
-        if (GoForwardHovered) AppStateHandler.Instance.ChangeScene("MainMenu");
+        if (GoForwardHovered)
+        {
+            //AppStateHandler.Instance.ChangeScene("MainMenu");
+            OnButtonClicked?.Invoke();
+        }
         //else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
         else if (GoBackHovered) AppStateHandler.Instance.GoBack();
 

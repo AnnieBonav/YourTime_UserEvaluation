@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 [InitializeOnLoad]
 public class AppStateHandler
 {
-    //public static AppStateHandler Instance { get; private set; }
     static public string currentScene { get; private set; }
     static private AppStateHandler instance;
+    public static List<string> navigationStack = new List<string>();
     private AppStateHandler() { }
     public static AppStateHandler Instance
     {
@@ -20,31 +20,32 @@ public class AppStateHandler
             if(instance == null)
             {
                 instance = new AppStateHandler();
+                InteractionsController.OnButtonClicked += instance.Test;
+                
                 string openedScene = SceneManager.GetActiveScene().name.ToString();
                 currentScene = openedScene;
+                navigationStack.Add(currentScene);
             }
             return instance;
         }
     }
 
-    public List<string> navigationStack = new List<string>();
+    public void ChangeScene(string openedScene)
+    {
+        SceneManager.LoadScene(openedScene);
+        currentScene = openedScene;
+        navigationStack.Add(currentScene);
+    }
 
     public void Test()
     {
-        Debug.Log(currentScene); //Only gets called the frist time the app starts
+        Debug.Log("I am heeereeee");
     }
 
     public void SubmitStars(int StarsNumber)
     {
         Debug.Log("Grade: " + StarsNumber);
         //ChangeScene(false);
-    }
-
-
-    public void ChangeScene(string openedScene) //TODO: Change so where to go is not hard coded
-    {
-        SceneManager.LoadScene(openedScene);
-        currentScene = openedScene;
     }
 
     public void CloseExercise()

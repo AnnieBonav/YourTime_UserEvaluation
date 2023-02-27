@@ -6,9 +6,6 @@ public class Test : MonoBehaviour
 {
     void Start()
     {
-        AppStateHandler.Instance.Test();
-        //AppStateHandler.Instance.SetCurrentScene("Annie");
-        //AppStateHandler.Instance.Test();
-        
+        AppStateHandler.Instance.Test();        
     }
 }
