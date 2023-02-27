@@ -20,7 +20,8 @@ public class AppStateHandler
             if(instance == null)
             {
                 instance = new AppStateHandler();
-                InteractionsController.OnButtonClicked += instance.Test;
+                InteractionsController.ChangeSceneButtonClicked += instance.ChangeScene;
+                InteractionsController.GoBackButtonClicked += instance.GoBack;
                 
                 string openedScene = SceneManager.GetActiveScene().name.ToString();
                 currentScene = openedScene;
@@ -61,6 +62,7 @@ public class AppStateHandler
 
     public void GoBack()
     {
+        Debug.Log("Going back");
         if (currentScene == "AfterExercise")
         {
             CloseExercise();

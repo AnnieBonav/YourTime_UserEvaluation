@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,11 @@ using UnityEngine.SceneManagement;
 using static MyTimer;
 
 
-
 public class InteractionsController : MonoBehaviour
 {
-    public delegate void ButtonClicked();
-    public static event ButtonClicked OnButtonClicked;
+
+    public static event Action<string> ChangeSceneButtonClicked;
+    public static event Action GoBackButtonClicked;
 
 
     public UserEvaluation interactionController;
@@ -211,10 +212,13 @@ public class InteractionsController : MonoBehaviour
         if (GoForwardHovered)
         {
             //AppStateHandler.Instance.ChangeScene("MainMenu");
-            OnButtonClicked?.Invoke();
+            ChangeSceneButtonClicked?.Invoke("MainMenu");
         }
         //else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
-        else if (GoBackHovered) AppStateHandler.Instance.GoBack();
+        else if (GoBackHovered)
+        {
+            GoBackButtonClicked?.Invoke();
+        }
 
         else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);
         else if (star2Hovered) AppStateHandler.Instance.SubmitStars(2);
