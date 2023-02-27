@@ -1,44 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum CurrentScene { SplashScreen, MainMenu, ExerciseSplash, BreathingExercise, About, AfterExercise };
-
-public class AppStateHandler : MonoBehaviour
+[InitializeOnLoad]
+public class AppStateHandler
 {
-    public static AppStateHandler Instance { get; private set; }
-
-    public List<CurrentScene> navigationStack = new List<CurrentScene>();
-
-    public CurrentScene currentScene { get; private set; } //TODO: Implement stack for navigation
-
-    private void Awake()
+    //public static AppStateHandler Instance { get; private set; }
+    static public string currentScene { get; private set; }
+    static private AppStateHandler instance;
+    private AppStateHandler() { }
+    public static AppStateHandler Instance
     {
-        if (Instance != null && Instance != this)
+        get
+        {
+            if(instance == null)
+            {
+                instance = new AppStateHandler();
+                string openedScene = SceneManager.GetActiveScene().name.ToString();
+                currentScene = openedScene;
+            }
+            return instance;
+        }
+        /*
+        Debug.Log("I am up and running");
+        currentScene = openedScene;
+
+        if (Instance != null && Instance != AppStateHandler)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
-            Instance.currentScene = CurrentScene.SplashScreen; //Only gets called the first time the app starts
+            Instance = AppStateHandler();
+            Instance.currentScene = "SplashScreen"; //Only gets called the first time the app starts
         }
         DontDestroyOnLoad(gameObject);
         navigationStack.Clear();
-        navigationStack.Add(CurrentScene.SplashScreen);
+        navigationStack.Add("SplashScreen");*/
     }
 
-    private void Start()
+    public List<string> navigationStack = new List<string>();
+
+
+    public void SetCurrentScene(string openedScene)
     {
-        Debug.Log("Start got called"); //Only gets called the frist time the app starts
+        currentScene = openedScene;
     }
 
-    public void SetActiveScene(CurrentScene openedScene)
+    public void Test()
+    {
+        Debug.Log(currentScene); //Only gets called the frist time the app starts
+    }
+
+    public void SetActiveScene(string openedScene)
     {
         navigationStack.Add(openedScene);
-        Instance.currentScene = navigationStack.Last();
+        //Instance.currentScene = navigationStack.Last();
     }
 
     public void SubmitStars(int StarsNumber)
@@ -54,41 +75,18 @@ public class AppStateHandler : MonoBehaviour
         if (changeToAbout)
         {
             SceneManager.LoadScene("About");
-            Instance.SetActiveScene(CurrentScene.About);
+            Instance.SetActiveScene("About");
         }
         else
         {
-            switch (Instance.currentScene)
-            {
-                case CurrentScene.SplashScreen:
-                    SceneManager.LoadScene("MainMenu");
-                    Instance.SetActiveScene(CurrentScene.MainMenu);
-                    break;
-                case CurrentScene.MainMenu:
-                    SceneManager.LoadScene("ExerciseSplash");
-                    Instance.SetActiveScene(CurrentScene.ExerciseSplash);
-                    break;
-                case CurrentScene.ExerciseSplash:
-                    SceneManager.LoadScene("BreathingExercise");
-                    Instance.SetActiveScene(CurrentScene.BreathingExercise);
-                    break;
-                case CurrentScene.BreathingExercise:
-                    SceneManager.LoadScene("AfterExercise");
-                    Instance.SetActiveScene(CurrentScene.AfterExercise);
-                    break;
-                case CurrentScene.AfterExercise:
-                    CloseExercise();
-                    SceneManager.LoadScene("MainMenu");
-                    Instance.currentScene = navigationStack.Last();
-                    break;
-            }
+            //SceneManager.LoadScene(Instance.currentScene);
         }
     }
 
     public void CloseExercise()
     {
         Debug.Log(navigationStack);
-        for(int i = navigationStack.Count - 1; i > navigationStack.IndexOf(CurrentScene.MainMenu); i--)
+        for(int i = navigationStack.Count - 1; i > navigationStack.IndexOf("MainMenu"); i--)
         {
             Debug.Log("Remove: " + i + " " + navigationStack[i]);
             navigationStack.RemoveAt(navigationStack.Count - 1);
@@ -98,7 +96,7 @@ public class AppStateHandler : MonoBehaviour
 
     public void GoBack()
     {
-        if (currentScene == CurrentScene.AfterExercise)
+        if (currentScene == "AfterExercise")
         {
             CloseExercise();
         }
@@ -106,27 +104,26 @@ public class AppStateHandler : MonoBehaviour
         {
             navigationStack.RemoveAt(navigationStack.Count - 1); //Pop the last one to change to the new current
         }
-        Instance.currentScene = navigationStack.Last();
+        //Instance.currentScene = navigationStack.Last();
 
-        switch (Instance.currentScene)
-        {
-            case CurrentScene.SplashScreen:
-                SceneManager.LoadScene("SplashScreen");
-                break;
-            case CurrentScene.MainMenu:
-                SceneManager.LoadScene("MainMenu");
-                break;
-            case CurrentScene.ExerciseSplash:
-                SceneManager.LoadScene("ExerciseSplash");
-                break;
-            case CurrentScene.BreathingExercise:
-                SceneManager.LoadScene("BrethingExercise");
-                break;
-            case CurrentScene.AfterExercise:
-                SceneManager.LoadScene("AfterExercise");
-                break;
-        }
+        //SceneManager.LoadScene(Instance.currentScene);
         
+    }
+    private void Awake()
+    {
+
+        /*if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            //Instance.currentScene = "SplashScreen"; //Only gets called the first time the app starts
+        }
+        DontDestroyOnLoad(gameObject);
+        navigationStack.Clear();
+        navigationStack.Add("SplashScreen");*/
     }
 
 }
