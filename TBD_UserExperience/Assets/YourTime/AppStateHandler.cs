@@ -25,62 +25,26 @@ public class AppStateHandler
             }
             return instance;
         }
-        /*
-        Debug.Log("I am up and running");
-        currentScene = openedScene;
-
-        if (Instance != null && Instance != AppStateHandler)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = AppStateHandler();
-            Instance.currentScene = "SplashScreen"; //Only gets called the first time the app starts
-        }
-        DontDestroyOnLoad(gameObject);
-        navigationStack.Clear();
-        navigationStack.Add("SplashScreen");*/
     }
 
     public List<string> navigationStack = new List<string>();
-
-
-    public void SetCurrentScene(string openedScene)
-    {
-        currentScene = openedScene;
-    }
 
     public void Test()
     {
         Debug.Log(currentScene); //Only gets called the frist time the app starts
     }
 
-    public void SetActiveScene(string openedScene)
-    {
-        navigationStack.Add(openedScene);
-        //Instance.currentScene = navigationStack.Last();
-    }
-
     public void SubmitStars(int StarsNumber)
     {
         Debug.Log("Grade: " + StarsNumber);
-        ChangeScene(false);
+        //ChangeScene(false);
     }
 
 
-    public void ChangeScene(bool changeToAbout) //TODO: Change so where to go is not hard coded
+    public void ChangeScene(string openedScene) //TODO: Change so where to go is not hard coded
     {
-        Debug.Log(navigationStack);
-        if (changeToAbout)
-        {
-            SceneManager.LoadScene("About");
-            Instance.SetActiveScene("About");
-        }
-        else
-        {
-            //SceneManager.LoadScene(Instance.currentScene);
-        }
+        SceneManager.LoadScene(openedScene);
+        currentScene = openedScene;
     }
 
     public void CloseExercise()

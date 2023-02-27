@@ -204,8 +204,9 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
-        else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
+        //if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
+        if (GoForwardHovered) AppStateHandler.Instance.ChangeScene("MainMenu");
+        //else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
         else if (GoBackHovered) AppStateHandler.Instance.GoBack();
 
         else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);

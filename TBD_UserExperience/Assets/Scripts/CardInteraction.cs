@@ -18,14 +18,14 @@ public class CardInteraction : MonoBehaviour
 
     public void OpenAbout()
     {
-        AppStateHandler.Instance.ChangeScene(true);
+        //AppStateHandler.Instance.ChangeScene(true);
     }
 
     public void OpenNextScene() //Parameters in functions are not seen in the inspector inside Event Trigger
     {
         if(SceneName == "")
         {
-            AppStateHandler.Instance.ChangeScene(false);
+            //AppStateHandler.Instance.ChangeScene(false);
         }
         else
         {
