@@ -19,13 +19,24 @@ public class Stars : MonoBehaviour
     [SerializeField]
     private GameObject parent;
 
+    [SerializeField]
+    private Material newMaterial;
+
     private void Awake()
     {
         for(int i = 0; i < objectsAmount; i++)
         {
-            objects.Add(new Star(objectPrefab, i, objectOffset, parent));
-            objects[i].PrintStarStatus();
+            Star newStar = new Star(objectPrefab, i, objectOffset, parent);
+            //objects.Add(new Star(objectPrefab, i, objectOffset, parent));
+            objects.Add(newStar);
+            //objects[i].PrintStarStatus();
         }
+        Debug.Log(objects);
+    }
+
+    public void ChangeStarColor()
+    {
+        objects[0].ChangeMaterial(newMaterial);
     }
 }
 
@@ -44,9 +55,15 @@ public class Star : MonoBehaviour
         Instance(starPrefab, id, objectOffset, parent);
     }
 
+    public void ChangeMaterial(Material newMaterial)
+    {
+        starInstance.GetComponent<MeshRenderer>().material = newMaterial;
+    }
+
     public void Instance(GameObject starPrefab, int id, float objectOffset, GameObject parent)
     {
         starInstance = Instantiate(starPrefab);
+        starInstance.name = (id+1).ToString();
         starInstance.transform.SetParent(parent.transform, false);
         starInstance.transform.position = new Vector3(starInstance.transform.position.x + id * objectOffset * parent.transform.localScale.x, starInstance.transform.position.y, starInstance.transform.position.z);
 

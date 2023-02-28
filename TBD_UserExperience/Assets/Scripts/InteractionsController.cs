@@ -42,20 +42,8 @@ public class InteractionsController : MonoBehaviour
     private bool GoBackHovered = false;
     private bool AboutIconHovered = false;
 
-    public MeshRenderer star1 = null;
-    public MeshRenderer star2 = null;
-    public MeshRenderer star3 = null;
-    public MeshRenderer star4 = null;
-    public MeshRenderer star5 = null;
+    public Stars stars;
 
-    public Material activatedStar;
-    public Material inactiveStar;
-
-    private bool star1Hovered = false;
-    private bool star2Hovered = false;
-    private bool star3Hovered = false;
-    private bool star4Hovered = false;
-    private bool star5Hovered = false;
 
     private void Awake()
     {
@@ -99,9 +87,10 @@ public class InteractionsController : MonoBehaviour
             }else if(hit.transform.name == "GoBackIcon" || hit.transform.name == "CloseIcon")
             {
                 GoBackHovered = true;
-            }else if (hit.transform.name == "1") //A for loop kills it
+            }else if (hit.transform.name == "1")
             {
-                star1Hovered = true;
+                Debug.Log("Hit");
+                stars.ChangeStarColor();
                 /*
                 for(int i = int.Parse(hit.transform.name); i > 0; i++)
                 {
@@ -110,19 +99,15 @@ public class InteractionsController : MonoBehaviour
             }
             else if (hit.transform.name == "2") //A for loop kills it
             {
-                star2Hovered = true;
             }
             else if (hit.transform.name == "3") //A for loop kills it
             {
-                star3Hovered = true;
             }
             else if (hit.transform.name == "4") //A for loop kills it
             {
-                star4Hovered = true;
             }
             else if (hit.transform.name == "5") //A for loop kills it
             {
-                star5Hovered = true;
             }
             return true;
         }
@@ -132,11 +117,7 @@ public class InteractionsController : MonoBehaviour
             GoBackHovered = false;
             AboutIconHovered = false;
 
-            star1Hovered = false;
-            star2Hovered = false;
-            star3Hovered = false;
-            star4Hovered = false;
-            star5Hovered = false;
+            //star1Hovered = false;
 
             return false;
         }
@@ -160,7 +141,7 @@ public class InteractionsController : MonoBehaviour
         {
             AboutIconRenderer.material = IconHoverMaterial;
         }
-        else if (star1Hovered)
+        /*else if (star1Hovered)
         {
             star1.material = activatedStar;
         }
@@ -189,7 +170,7 @@ public class InteractionsController : MonoBehaviour
             star3.material = activatedStar;
             star4.material = activatedStar;
             star5.material = activatedStar;
-        }
+        }*/
         else
         {
             if (ButtonRenderer != null) ButtonRenderer.material = ButtonBaseMaterial;
@@ -198,11 +179,7 @@ public class InteractionsController : MonoBehaviour
             if (AboutIconRenderer != null) AboutIconRenderer.material = IconBaseMaterial;
 
 
-            if (star1 != null) star1.material = inactiveStar;
-            if (star2 != null) star2.material = inactiveStar;
-            if (star3 != null) star3.material = inactiveStar;
-            if (star4 != null) star4.material = inactiveStar;
-            if (star5 != null) star5.material = inactiveStar;
+            //if (star1 != null) star1.material = inactiveStar;
         }
     }
 

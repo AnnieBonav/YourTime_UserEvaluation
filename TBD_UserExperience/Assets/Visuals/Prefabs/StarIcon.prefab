@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1256261878833590393}
   - component: {fileID: 2792504519235387356}
   - component: {fileID: 82207570082810646}
-  m_Layer: 0
+  - component: {fileID: 8267354107705853357}
+  m_Layer: 7
   m_Name: StarIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8267354107705853357
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883897902675126979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1904053375976592222, guid: b611805963b4c5a4691368bb546fa1cb, type: 3}
