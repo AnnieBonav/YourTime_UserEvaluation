@@ -31,14 +31,17 @@ public class Stars : MonoBehaviour
         for(int i = 0; i < objectsAmount; i++)
         {
             objects.Add(new Star(objectPrefab, i, objectOffset, parent));
-            //objects[i].PrintStarStatus();
         }
         Debug.Log(objects);
     }
 
     public void ChangeStarColor(string starId)
     {
-        objects[int.Parse(starId)-1].ChangeHoverMaterial(hoverMaterial);
+        for(int i = int.Parse(starId) -1; i >= 0; i--)
+        {
+            objects[i].ChangeHoverMaterial(hoverMaterial);
+        }
+        //objects[int.Parse(starId)-1].ChangeHoverMaterial(hoverMaterial);
     }
 
     public void WhipeStars()
