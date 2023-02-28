@@ -12,52 +12,50 @@ public class AppStateHandler
     static public string currentScene { get; private set; }
     static private AppStateHandler instance;
     public static List<string> navigationStack = new List<string>();
-    private AppStateHandler() { }
+    private AppStateHandler() {
+
+    }
+
     public static AppStateHandler Instance
     {
         get
         {
             if(instance == null)
             {
-                instance = new AppStateHandler();
-                InteractionsController.ChangeSceneButtonClicked += instance.ChangeScene;
-                InteractionsController.GoBackButtonClicked += instance.GoBack;
-                
-                string openedScene = SceneManager.GetActiveScene().name.ToString();
-                currentScene = openedScene;
-                navigationStack.Add(currentScene);
+                Debug.Log("This should not happen. Also, learn to do Throw errors. If this happens, just take the code on OnRuntimeLoad and put it if istance == null");
             }
             return instance;
         }
     }
 
-    public void ChangeScene(string openedScene)
+    [RuntimeInitializeOnLoadMethod]
+    static void OnRuntimeLoad()
     {
-        SceneManager.LoadScene(openedScene);
-        currentScene = openedScene;
-        navigationStack.Add(currentScene);
+        if (instance == null)
+        {
+            instance = new AppStateHandler();
+            InteractionsController.ChangeSceneButtonClicked += instance.ChangeScene;
+            InteractionsController.GoBackButtonClicked += instance.GoBack;
+
+            string openedScene = SceneManager.GetActiveScene().name.ToString();
+            currentScene = openedScene;
+            navigationStack.Add(currentScene);
+        }
     }
 
-    public void Test()
+    //Takes string (new scene) from object that raised the event
+    public void ChangeScene(string requestedScene)
     {
-        Debug.Log("I am heeereeee");
+        Debug.Log("Changing scene");
+        SceneManager.LoadScene(requestedScene);
+        currentScene = requestedScene;
+        navigationStack.Add(currentScene);
     }
 
     public void SubmitStars(int StarsNumber)
     {
         Debug.Log("Grade: " + StarsNumber);
         //ChangeScene(false);
-    }
-
-    public void CloseExercise()
-    {
-        Debug.Log(navigationStack);
-        for(int i = navigationStack.Count - 1; i > navigationStack.IndexOf("MainMenu"); i--)
-        {
-            Debug.Log("Remove: " + i + " " + navigationStack[i]);
-            navigationStack.RemoveAt(navigationStack.Count - 1);
-            
-        }
     }
 
     public void GoBack()
@@ -71,11 +69,21 @@ public class AppStateHandler
         {
             navigationStack.RemoveAt(navigationStack.Count - 1); //Pop the last one to change to the new current
         }
-        //Instance.currentScene = navigationStack.Last();
-
-        //SceneManager.LoadScene(Instance.currentScene);
-        
+        currentScene = navigationStack.Last();
+        SceneManager.LoadScene(currentScene);
     }
+
+    public void CloseExercise()
+    {
+        Debug.Log(navigationStack);
+        for(int i = navigationStack.Count - 1; i > navigationStack.IndexOf("MainMenu"); i--)
+        {
+            Debug.Log("Remove: " + i + " " + navigationStack[i]);
+            navigationStack.RemoveAt(navigationStack.Count - 1);
+            
+        }
+    }
+
     private void Awake()
     {
 

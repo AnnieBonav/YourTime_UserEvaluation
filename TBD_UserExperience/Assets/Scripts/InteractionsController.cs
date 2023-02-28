@@ -211,8 +211,10 @@ public class InteractionsController : MonoBehaviour
         //if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
         if (GoForwardHovered)
         {
+            Debug.Log("Go Forward");
             //AppStateHandler.Instance.ChangeScene("MainMenu");
             ChangeSceneButtonClicked?.Invoke("MainMenu");
+            GoBackButtonClicked?.Invoke();
         }
         //else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
         else if (GoBackHovered)
