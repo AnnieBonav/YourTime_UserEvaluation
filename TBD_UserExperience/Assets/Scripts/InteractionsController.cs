@@ -9,11 +9,9 @@ using static MyTimer;
 
 public class InteractionsController : MonoBehaviour
 {
-
     public static event Action GoForwardButtonClicked;
     public static event Action GoBackButtonClicked;
     public static event Action AboutButtonClicked;
-
 
     public UserEvaluation interactionController;
 
@@ -42,7 +40,9 @@ public class InteractionsController : MonoBehaviour
     private bool GoBackHovered = false;
     private bool AboutIconHovered = false;
 
+    private bool StarHovered = false;
     public Stars stars;
+    private string starHovered = "";
 
 
     private void Awake()
@@ -63,7 +63,6 @@ public class InteractionsController : MonoBehaviour
         interactionController.Disable();
         interactionController.UI.Click.canceled -= CheckClick;
         interactionController.UI.Point.performed -= CheckHover;
-
     }
 
     private bool CheckRayCollision()
@@ -87,27 +86,10 @@ public class InteractionsController : MonoBehaviour
             }else if(hit.transform.name == "GoBackIcon" || hit.transform.name == "CloseIcon")
             {
                 GoBackHovered = true;
-            }else if (hit.transform.name == "1")
+            }else if (hit.transform.tag == "star")
             {
-                Debug.Log("Hit");
-                stars.ChangeStarColor();
-                /*
-                for(int i = int.Parse(hit.transform.name); i > 0; i++)
-                {
-                    Debug.Log(i);
-                }*/
-            }
-            else if (hit.transform.name == "2") //A for loop kills it
-            {
-            }
-            else if (hit.transform.name == "3") //A for loop kills it
-            {
-            }
-            else if (hit.transform.name == "4") //A for loop kills it
-            {
-            }
-            else if (hit.transform.name == "5") //A for loop kills it
-            {
+                starHovered = hit.transform.name;
+                StarHovered = true;
             }
             return true;
         }
@@ -116,8 +98,7 @@ public class InteractionsController : MonoBehaviour
             GoForwardHovered = false;
             GoBackHovered = false;
             AboutIconHovered = false;
-
-            //star1Hovered = false;
+            StarHovered = false;
 
             return false;
         }
@@ -131,7 +112,6 @@ public class InteractionsController : MonoBehaviour
         {
             if(ButtonRenderer != null) ButtonRenderer.material = ButtonHoverMaterial;
             if(CardRenderer != null) CardRenderer.material = CardHoverMaterial;
-            //return; //Check logic if I can leave only ifs and rteturns
         }
         else if (GoBackHovered)
         {
@@ -141,45 +121,17 @@ public class InteractionsController : MonoBehaviour
         {
             AboutIconRenderer.material = IconHoverMaterial;
         }
-        /*else if (star1Hovered)
+        else if (StarHovered)
         {
-            star1.material = activatedStar;
+            stars.ChangeStarColor(starHovered);
         }
-        else if (star2Hovered)
-        {
-            star1.material = activatedStar;
-            star2.material = activatedStar;
-        }
-        else if (star3Hovered)
-        {
-            star1.material = activatedStar;
-            star2.material = activatedStar;
-            star3.material = activatedStar;
-        }
-        else if (star4Hovered)
-        {
-            star1.material = activatedStar;
-            star2.material = activatedStar;
-            star3.material = activatedStar;
-            star4.material = activatedStar;
-        }
-        else if (star5Hovered)
-        {
-            star1.material = activatedStar;
-            star2.material = activatedStar;
-            star3.material = activatedStar;
-            star4.material = activatedStar;
-            star5.material = activatedStar;
-        }*/
         else
         {
             if (ButtonRenderer != null) ButtonRenderer.material = ButtonBaseMaterial;
             if (CardRenderer != null) CardRenderer.material = CardBaseMaterial;
             if (GoBackIconRenderer != null) GoBackIconRenderer.material = IconBaseMaterial;
             if (AboutIconRenderer != null) AboutIconRenderer.material = IconBaseMaterial;
-
-
-            //if (star1 != null) star1.material = inactiveStar;
+            stars.WhipeStars();
         }
     }
 
@@ -203,13 +155,9 @@ public class InteractionsController : MonoBehaviour
 
             GoBackButtonClicked?.Invoke();
         }
-
-        /*else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);
-        else if (star2Hovered) AppStateHandler.Instance.SubmitStars(2);
-        else if (star3Hovered) AppStateHandler.Instance.SubmitStars(3);
-        else if (star4Hovered) AppStateHandler.Instance.SubmitStars(4);
-        else if (star5Hovered) AppStateHandler.Instance.SubmitStars(5);*/
-
-        //else if (star1Hovered || star2Hovered || star3Hovered || star4Hovered || star5Hovered) AppStateHandler.Instance.ChangeScene();
+        else if (StarHovered)
+        {
+            //Submit stars
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Stars : MonoBehaviour
@@ -20,23 +21,32 @@ public class Stars : MonoBehaviour
     private GameObject parent;
 
     [SerializeField]
-    private Material newMaterial;
+    private Material hoverMaterial;
+
+    [SerializeField]
+    private Material baseMaterial;
 
     private void Awake()
     {
         for(int i = 0; i < objectsAmount; i++)
         {
-            Star newStar = new Star(objectPrefab, i, objectOffset, parent);
-            //objects.Add(new Star(objectPrefab, i, objectOffset, parent));
-            objects.Add(newStar);
+            objects.Add(new Star(objectPrefab, i, objectOffset, parent));
             //objects[i].PrintStarStatus();
         }
         Debug.Log(objects);
     }
 
-    public void ChangeStarColor()
+    public void ChangeStarColor(string starId)
     {
-        objects[0].ChangeMaterial(newMaterial);
+        objects[int.Parse(starId)-1].ChangeHoverMaterial(hoverMaterial);
+    }
+
+    public void WhipeStars()
+    {
+        for(int i = 0; i <objectsAmount; i++)
+        {
+            objects[i].ChangeBaseMaterial(baseMaterial);
+        }
     }
 }
 
@@ -55,15 +65,21 @@ public class Star : MonoBehaviour
         Instance(starPrefab, id, objectOffset, parent);
     }
 
-    public void ChangeMaterial(Material newMaterial)
+    public void ChangeHoverMaterial(Material hoverMaterial)
     {
-        starInstance.GetComponent<MeshRenderer>().material = newMaterial;
+        starInstance.GetComponent<MeshRenderer>().material = hoverMaterial;
+    }
+
+    public void ChangeBaseMaterial(Material baseMaterial)
+    {
+        starInstance.GetComponent<MeshRenderer>().material = baseMaterial;
     }
 
     public void Instance(GameObject starPrefab, int id, float objectOffset, GameObject parent)
     {
         starInstance = Instantiate(starPrefab);
         starInstance.name = (id+1).ToString();
+        starInstance.tag = "star";
         starInstance.transform.SetParent(parent.transform, false);
         starInstance.transform.position = new Vector3(starInstance.transform.position.x + id * objectOffset * parent.transform.localScale.x, starInstance.transform.position.y, starInstance.transform.position.z);
 

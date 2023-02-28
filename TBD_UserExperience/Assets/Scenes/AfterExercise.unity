@@ -1090,7 +1090,8 @@ MonoBehaviour:
   objectOffset: 160
   objectsAmount: 5
   parent: {fileID: 1839083945}
-  newMaterial: {fileID: 2100000, guid: da1632a5693b3f140b4dd5a848a6005f, type: 2}
+  hoverMaterial: {fileID: 2100000, guid: 41dfb3c7ac726054eb78e118d955a87f, type: 2}
+  baseMaterial: {fileID: 2100000, guid: 3ffb16a91f7b6e344a8108bd78723f41, type: 2}
 --- !u!1001 &1935674327
 PrefabInstance:
   m_ObjectHideFlags: 0
