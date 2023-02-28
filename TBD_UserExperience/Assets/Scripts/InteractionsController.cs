@@ -10,8 +10,9 @@ using static MyTimer;
 public class InteractionsController : MonoBehaviour
 {
 
-    public static event Action<string> ChangeSceneButtonClicked;
+    public static event Action GoForwardButtonClicked;
     public static event Action GoBackButtonClicked;
+    public static event Action AboutButtonClicked;
 
 
     public UserEvaluation interactionController;
@@ -208,25 +209,29 @@ public class InteractionsController : MonoBehaviour
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        //if (GoForwardHovered) AppStateHandler.Instance.ChangeScene(false);
         if (GoForwardHovered)
         {
             Debug.Log("Go Forward");
-            //AppStateHandler.Instance.ChangeScene("MainMenu");
-            ChangeSceneButtonClicked?.Invoke("MainMenu");
-            GoBackButtonClicked?.Invoke();
+            GoForwardButtonClicked?.Invoke();
         }
-        //else if (AboutIconHovered) AppStateHandler.Instance.ChangeScene(true);
+        else if (AboutIconHovered)
+        {
+            Debug.Log("Go About");
+            AboutButtonClicked?.Invoke();
+
+        }
         else if (GoBackHovered)
         {
+            Debug.Log("Go Back");
+
             GoBackButtonClicked?.Invoke();
         }
 
-        else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);
+        /*else if (star1Hovered) AppStateHandler.Instance.SubmitStars(1);
         else if (star2Hovered) AppStateHandler.Instance.SubmitStars(2);
         else if (star3Hovered) AppStateHandler.Instance.SubmitStars(3);
         else if (star4Hovered) AppStateHandler.Instance.SubmitStars(4);
-        else if (star5Hovered) AppStateHandler.Instance.SubmitStars(5);
+        else if (star5Hovered) AppStateHandler.Instance.SubmitStars(5);*/
 
         //else if (star1Hovered || star2Hovered || star3Hovered || star4Hovered || star5Hovered) AppStateHandler.Instance.ChangeScene();
     }

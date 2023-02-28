@@ -12,21 +12,6 @@ public class AppStateHandler
     static public string currentScene { get; private set; }
     static private AppStateHandler instance;
     public static List<string> navigationStack = new List<string>();
-    private AppStateHandler() {
-
-    }
-
-    public static AppStateHandler Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                Debug.Log("This should not happen. Also, learn to do Throw errors. If this happens, just take the code on OnRuntimeLoad and put it if istance == null");
-            }
-            return instance;
-        }
-    }
 
     [RuntimeInitializeOnLoadMethod]
     static void OnRuntimeLoad()
@@ -34,8 +19,9 @@ public class AppStateHandler
         if (instance == null)
         {
             instance = new AppStateHandler();
-            InteractionsController.ChangeSceneButtonClicked += instance.ChangeScene;
+            InteractionsController.GoForwardButtonClicked += instance.GoForward;
             InteractionsController.GoBackButtonClicked += instance.GoBack;
+            InteractionsController.AboutButtonClicked += instance.OpenAbout;
 
             string openedScene = SceneManager.GetActiveScene().name.ToString();
             currentScene = openedScene;
@@ -44,12 +30,43 @@ public class AppStateHandler
     }
 
     //Takes string (new scene) from object that raised the event
-    public void ChangeScene(string requestedScene)
+    private void SetActiveScene(string requestedScene)
     {
-        Debug.Log("Changing scene");
+        Debug.Log("Setting scene");
         SceneManager.LoadScene(requestedScene);
         currentScene = requestedScene;
         navigationStack.Add(currentScene);
+    }
+
+    private void OpenAbout()
+    {
+        Debug.Log("Clicked about");
+        SetActiveScene("About");
+    }
+
+
+    private void GoForward()
+    {
+        Debug.Log("Going forward");
+        switch (currentScene)
+        {
+            case "SplashScreen":
+                SetActiveScene("MainMenu");
+                break;
+            case "MainMenu":
+                SetActiveScene("ExerciseSplash");
+                break;
+            case "ExerciseSplash":
+                SetActiveScene("BreathingExercise");
+                break;
+            case "BreathingExercise":
+                SetActiveScene("AfterExercise");
+                break;
+            case "AfterExercise":
+                CloseExercise();
+                SetActiveScene("MainMenu");
+                break;
+        }
     }
 
     public void SubmitStars(int StarsNumber)
@@ -83,22 +100,4 @@ public class AppStateHandler
             
         }
     }
-
-    private void Awake()
-    {
-
-        /*if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            //Instance.currentScene = "SplashScreen"; //Only gets called the first time the app starts
-        }
-        DontDestroyOnLoad(gameObject);
-        navigationStack.Clear();
-        navigationStack.Add("SplashScreen");*/
-    }
-
 }

@@ -15,7 +15,7 @@ public class CardInteraction : MonoBehaviour
 
     public Material InactiveStar;
     public Material ActiveStar;
-
+/*
     public void OpenAbout()
     {
         //AppStateHandler.Instance.ChangeScene(true);
@@ -25,7 +25,7 @@ public class CardInteraction : MonoBehaviour
     {
         if(SceneName == "")
         {
-            //AppStateHandler.Instance.ChangeScene(false);
+            ChangeSceneButtonClicked?.Invoke("MainMenu");
         }
         else
         {
@@ -106,5 +106,5 @@ public class CardInteraction : MonoBehaviour
         star3.material = InactiveStar;
         star4.material = InactiveStar;
         star5.material = InactiveStar;
-    }
+    }*/
 }
