@@ -32,7 +32,6 @@ public class AppStateHandler
     //Takes string (new scene) from object that raised the event
     private void SetActiveScene(string requestedScene)
     {
-        Debug.Log("Setting scene");
         SceneManager.LoadScene(requestedScene);
         currentScene = requestedScene;
         navigationStack.Add(currentScene);
@@ -40,14 +39,12 @@ public class AppStateHandler
 
     private void OpenAbout()
     {
-        Debug.Log("Clicked about");
         SetActiveScene("About");
     }
 
 
     private void GoForward()
     {
-        Debug.Log("Going forward");
         switch (currentScene)
         {
             case "SplashScreen":
@@ -77,7 +74,6 @@ public class AppStateHandler
 
     public void GoBack()
     {
-        Debug.Log("Going back");
         if (currentScene == "AfterExercise")
         {
             CloseExercise();
