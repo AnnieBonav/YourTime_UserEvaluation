@@ -22,6 +22,7 @@ public class AppStateHandler
             InteractionsController.GoForwardButtonClicked += instance.GoForward;
             InteractionsController.GoBackButtonClicked += instance.GoBack;
             InteractionsController.AboutButtonClicked += instance.OpenAbout;
+            InteractionsController.StarClicked += instance.SubmitStars;
 
             string openedScene = SceneManager.GetActiveScene().name.ToString();
             currentScene = openedScene;
@@ -69,7 +70,7 @@ public class AppStateHandler
     public void SubmitStars(int StarsNumber)
     {
         Debug.Log("Grade: " + StarsNumber);
-        //ChangeScene(false);
+        GoForward();
     }
 
     public void GoBack()

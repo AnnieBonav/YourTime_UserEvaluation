@@ -6,16 +6,9 @@ using UnityEngine.SceneManagement;
 public class CardInteraction : MonoBehaviour
 {
     public string SceneName;
-
-    public MeshRenderer star1 = null;
-    public MeshRenderer star2 = null;
-    public MeshRenderer star3 = null;
-    public MeshRenderer star4 = null;
-    public MeshRenderer star5 = null;
-
     public Material InactiveStar;
     public Material ActiveStar;
-/*
+
     public void OpenAbout()
     {
         //AppStateHandler.Instance.ChangeScene(true);
@@ -25,7 +18,7 @@ public class CardInteraction : MonoBehaviour
     {
         if(SceneName == "")
         {
-            ChangeSceneButtonClicked?.Invoke("MainMenu");
+            //ChangeSceneButtonClicked?.Invoke("MainMenu"); //Change to singleton
         }
         else
         {
@@ -34,6 +27,7 @@ public class CardInteraction : MonoBehaviour
         
     }
 
+    /*
     public void GoBack()
     {
         AppStateHandler.Instance.GoBack();

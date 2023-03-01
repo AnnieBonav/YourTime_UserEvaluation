@@ -4,46 +4,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static MyTimer;
-
 
 public class InteractionsController : MonoBehaviour
 {
     public static event Action GoForwardButtonClicked;
     public static event Action GoBackButtonClicked;
     public static event Action AboutButtonClicked;
+    public static event Action<int> StarClicked;
 
-    public UserEvaluation interactionController;
+    private UserEvaluation interactionController;
 
-    //Splash Screen
-    public MeshRenderer ButtonRenderer = null;
-    public Material ButtonBaseMaterial;
-    public Material ButtonHoverMaterial;
+    [Header("Button properties")]
+    [SerializeField]
+    private MeshRenderer ButtonRenderer = null;
+    [SerializeField]
+    private Material ButtonBaseMaterial;
+    [SerializeField]
+    private Material ButtonHoverMaterial;
 
-    // Main Menu
+    [Header("Card properties")]
+    [SerializeField]
     public MeshRenderer CardRenderer = null;
+    [SerializeField]
     public Material CardBaseMaterial;
+    [SerializeField]
     public Material CardHoverMaterial;
 
-
-    //General
+    [Header("Icons properties")]
+    [SerializeField]
     public MeshRenderer GoBackIconRenderer = null;
+    [SerializeField]
     public MeshRenderer AboutIconRenderer = null;
-    
+    [SerializeField]
     public Material IconBaseMaterial;
+    [SerializeField]
     public Material IconHoverMaterial;
 
+    [Header("Layer it is checking interactions in")]
     [SerializeField]
-    LayerMask layerMask;
+    private LayerMask layerMask;
 
-    private bool GoForwardHovered = false; //Indludes getSTarted and card
-    private bool GoBackHovered = false;
-    private bool AboutIconHovered = false;
-
-    private bool StarHovered = false;
+    [Header("Stars properties")]
     public Stars stars;
-    private string starHovered = "";
 
+    private bool _goForwardHovered = false; //Indludes getSTarted and card
+    private bool _goBackHovered = false;
+    private bool _aboutIconHovered = false;
+
+    private bool _starIsHovered = false;
+    private string _starHoveredId = "";
 
     private void Awake()
     {
@@ -71,35 +80,32 @@ public class InteractionsController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10, layerMask))
         {
-            GoForwardHovered = false;
-            GoBackHovered = false;
-            AboutIconHovered = false;
+            _goForwardHovered = false;
+            _goBackHovered = false;
+            _aboutIconHovered = false;
 
             if(hit.transform.name == "GetStarted" || hit.transform.name == "DailyCard")
             {
-                GoForwardHovered = true;
+                _goForwardHovered = true;
             }else if (hit.transform.name == "AboutIcon")
             {
-                AboutIconHovered= true;
-                Debug.Log(AboutIconHovered);
-
+                _aboutIconHovered= true;
             }else if(hit.transform.name == "GoBackIcon" || hit.transform.name == "CloseIcon")
             {
-                GoBackHovered = true;
+                _goBackHovered = true;
             }else if (hit.transform.tag == "star")
             {
-                starHovered = hit.transform.name;
-                StarHovered = true;
+                _starHoveredId = hit.transform.name;
+                _starIsHovered = true;
             }
             return true;
         }
         else
         {
-            GoForwardHovered = false;
-            GoBackHovered = false;
-            AboutIconHovered = false;
-            StarHovered = false;
-
+            _goForwardHovered = false;
+            _goBackHovered = false;
+            _aboutIconHovered = false;
+            _starIsHovered = false;
             return false;
         }
         
@@ -108,22 +114,22 @@ public class InteractionsController : MonoBehaviour
     private void CheckHover(InputAction.CallbackContext context)
     {
         CheckRayCollision();
-        if (GoForwardHovered)
+        if (_goForwardHovered)
         {
             if(ButtonRenderer != null) ButtonRenderer.material = ButtonHoverMaterial;
             if(CardRenderer != null) CardRenderer.material = CardHoverMaterial;
         }
-        else if (GoBackHovered)
+        else if (_goBackHovered)
         {
             GoBackIconRenderer.material = IconHoverMaterial;
         }
-        else if (AboutIconHovered)
+        else if (_aboutIconHovered)
         {
             AboutIconRenderer.material = IconHoverMaterial;
         }
-        else if (StarHovered)
+        else if (_starIsHovered)
         {
-            stars.ChangeStarColor(starHovered);
+            stars.ChangeStarColor(_starHoveredId);
         }
         else
         {
@@ -131,33 +137,32 @@ public class InteractionsController : MonoBehaviour
             if (CardRenderer != null) CardRenderer.material = CardBaseMaterial;
             if (GoBackIconRenderer != null) GoBackIconRenderer.material = IconBaseMaterial;
             if (AboutIconRenderer != null) AboutIconRenderer.material = IconBaseMaterial;
-            stars.WhipeStars();
+            if (stars != null) stars.WhipeStars();
         }
     }
 
 
     private void CheckClick(InputAction.CallbackContext context)
     {
-        if (GoForwardHovered)
+        if (_goForwardHovered)
         {
             Debug.Log("Go Forward");
             GoForwardButtonClicked?.Invoke();
         }
-        else if (AboutIconHovered)
+        else if (_aboutIconHovered)
         {
             Debug.Log("Go About");
             AboutButtonClicked?.Invoke();
 
         }
-        else if (GoBackHovered)
+        else if (_goBackHovered)
         {
             Debug.Log("Go Back");
-
             GoBackButtonClicked?.Invoke();
         }
-        else if (StarHovered)
+        else if (_starIsHovered)
         {
-            //Submit stars
+            StarClicked?.Invoke(int.Parse(_starHoveredId));
         }
     }
 }

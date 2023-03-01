@@ -14,17 +14,21 @@ namespace BreathExercise
 
     public class BreathingStateMachine : MonoBehaviour
     {
-        public GameObject TitlesParent;
-        public GameObject ParticleSystemParent;
-        public GameObject ParticleSystem;
+        [Header("Objects needed")]
+        [SerializeField]
+        private GameObject TitlesParent;
+        [SerializeField]
+        private GameObject ParticleSystemParent;
+        [SerializeField]
+        private GameObject ParticleSystem;
 
+        [Header("Exercise settings")]
+        [SerializeField]
         private BreathingState currentState;
-
-        public Animation numbersAnimation;
-
+        [SerializeField]
+        private Animation numbersAnimation;
         [SerializeField]
         private List<BreathingState> BreathingStates = new List<BreathingState>();
-
         [SerializeField]
         private int maxIterations;
 
@@ -34,9 +38,11 @@ namespace BreathExercise
 
         private GameObject particleSystemInstance = null;
 
-        public GameObject closeButton = null;
+        [Header("UI")]
+        [SerializeField]
+        private GameObject closeButton = null;
 
-        private void Awake() //Happens every time the scene is opened
+        private void Awake()
         {
             MyTimer.onTimerEnds += CheckState;
             exerciseTimer = new MyTimer(5);

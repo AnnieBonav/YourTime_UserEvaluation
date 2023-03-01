@@ -41,7 +41,6 @@ public class Stars : MonoBehaviour
         {
             objects[i].ChangeHoverMaterial(hoverMaterial);
         }
-        //objects[int.Parse(starId)-1].ChangeHoverMaterial(hoverMaterial);
     }
 
     public void WhipeStars()
@@ -57,13 +56,9 @@ public class Star : MonoBehaviour
 {
     public int id;
     public GameObject starInstance;
-    public bool hovered;
-    public bool isPainetd;
     public Star(GameObject starPrefab, int id, float objectOffset, GameObject parent)
     {
         this.id = id;
-        hovered = false;
-        isPainetd = false;
 
         Instance(starPrefab, id, objectOffset, parent);
     }
@@ -86,12 +81,5 @@ public class Star : MonoBehaviour
         starInstance.transform.SetParent(parent.transform, false);
         starInstance.transform.position = new Vector3(starInstance.transform.position.x + id * objectOffset * parent.transform.localScale.x, starInstance.transform.position.y, starInstance.transform.position.z);
 
-    }
-
-    public void PrintStarStatus()
-    {
-        Debug.Log("Star id: " + id.ToString());
-        Debug.Log("Status: " + hovered);
-        Debug.Log("Status: " + isPainetd);
     }
 }
